@@ -1,6 +1,8 @@
 # farm-game
 農場遊戲
 
+![image](https://github.com/yesseecity/farm-game/blob/master/docs/main.jpg)
+
 
 ### 開發環境安裝
 - 安裝nodejs  
