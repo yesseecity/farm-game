@@ -7,3 +7,307 @@ h1 {
   font-weight: normal;
   font-size: 140%;
 }
+
+.main-view-port {
+  width: 800px;
+  height: 600px;
+  border: 1px solid black;
+  position: relative;
+  margin: 0 auto;
+  perspective: 800px;
+  .account-info {
+    width: 320px;
+    height: 70px;
+    background-color: #d5d5d5;
+    overflow: hidden;
+    position: absolute;
+    .exp {
+      border: 1px solid black;
+      width: 200px;
+      height: 15px;
+      line-height: 10px;
+
+      position: absolute;
+      left: 70px;
+      top: 10px;
+      .full-exp {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+      .real-exp {
+        position: absolute;
+        background-color: #eddc21;
+        width:50%;
+        height: 100%
+      }
+      .text {
+        position: absolute;
+        right: 5px;
+        top: 0px;
+      }
+    }
+    .level {
+      border: 1px solid black;
+      width: 60px;
+      height: 50px;
+      position: absolute;
+      left: 0px;
+      top: 0px;
+    }
+    .money {
+      height: 24px;
+      // border: 1px solid black;
+      position: absolute;
+      top: 36px;
+      left: 70px;
+    }
+  }
+
+  .shop {
+    position: absolute;
+    border: 1px solid black;
+    right: 330px;
+    height: 60px;
+    width: 60px;
+  }
+
+  .weather {
+    position: absolute;
+    border: 1px solid black;
+    right: 130px;
+    height: 100px;
+    width: 100px;
+  }
+
+  .field {
+    position: absolute;
+    border: 1px solid black;
+    width: 300px;
+    height: 350px;
+    top: 100px;
+    left: 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    transform: rotate3d(1, 0, 0, 44deg);
+    // transform: skewX(-10deg) rotateX(30deg);
+    .sub-field {
+      border: 1px solid black;
+      &:hover {
+        background-color: #06ff00;
+      }
+      
+    }
+  }
+
+  .fence {
+    position: absolute;
+    border: 1px solid black;
+    left: 0px;
+    bottom: 10px;
+    height: 120px;
+    width: 680px;
+    .fence-divs {
+      $fence-color: #bf6730;
+      position: absolute;
+      top: 100px;
+      left: -60px;
+      div {
+        background-color: $fence-color;
+        position:relative;
+      }
+      .fence-1{
+        width:20px;
+        height:80px;
+        background-color: $fence-color;
+        top:-80px;
+        left:280px;
+        z-index:30;
+        &::after{
+          content:'';
+          position:absolute;
+          width:0;
+          height:0;
+          border-right:10px solid transparent;
+          border-bottom:15px solid  $fence-color;
+          border-left:10px solid transparent;
+          top:-15px;
+        }
+        &::before{
+          content:'';
+          position:absolute;
+          width:100px;
+          height:20px;
+          background-color: $fence-color;
+          left:-85px;
+        }
+      }
+      .fence-2{
+        position:relative;
+        width:20px;
+        height:80px;
+        background-color: $fence-color;
+        top:-160px;
+        left:240px;
+        z-index:30;
+        &::after{
+          content:'';
+          position:absolute;
+          width:0;
+          height:0;
+          border-right:10px solid transparent;
+          border-bottom:15px solid  $fence-color;
+          border-left:10px solid transparent;
+          top:-15px;
+        }
+         &::before{
+          content:'';
+          position:absolute;
+          width:100px;
+          height:20px;
+          background-color: $fence-color;
+          left:-45px;
+           top:40px;
+        }
+      }
+      .fence-3{
+        position:relative;
+        width:20px;
+        height:80px;
+        background-color: $fence-color;
+        top:-240px;
+        left:200px;
+        z-index:30;
+        &::after{
+          content:'';
+          position:absolute;
+          width:0;
+          height:0;
+          border-right:10px solid transparent;
+          border-bottom:15px solid  $fence-color;
+          border-left:10px solid transparent;
+          top:-15px;
+        }
+      }
+
+      .fence-4{
+        position:relative;
+        width:20px;
+        height:80px;
+        background-color: $fence-color;
+        top:-320px;
+        left:595px;
+        z-index:30;
+        &::after{
+          content:'';
+          position:absolute;
+          width:0;
+          height:0;
+          border-right:10px solid transparent;
+          border-bottom:15px solid  $fence-color;
+          border-left:10px solid transparent;
+          top:-15px;
+        }
+        &::before{
+          content:'';
+          position:absolute;
+          width:105px;
+          height:20px;
+          background-color: $fence-color;
+        }
+      }
+      .fence-5{
+        position:relative;
+        width:20px;
+        height:80px;
+        background-color: $fence-color;
+        top:-400px;
+        left:635px;
+        z-index:30;
+        &::after{
+          content:'';
+          position:absolute;
+          width:0;
+          height:0;
+          border-right:10px solid transparent;
+          border-bottom:15px solid  $fence-color;
+          border-left:10px solid transparent;
+          top:-15px;
+        }
+        &::before{
+          content:'';
+          position:absolute;
+          width:105px;
+          height:20px;
+          background-color: $fence-color;
+          left:-40px;
+          top:40px;
+        }
+      }
+      .fence-6{
+         position:relative;
+        width:20px;
+        height:80px;
+        background-color: $fence-color;
+        top:-480px;
+        left:675px;
+        z-index:30;
+        &::after{
+          content:'';
+          position:absolute;
+          width:0;
+          height:0;
+          border-right:10px solid transparent;
+          border-bottom:15px solid  $fence-color;
+          border-left:10px solid transparent;
+          top:-15px;
+        }
+      }
+    }
+  }
+
+  .mail-box {
+    position: absolute;
+    border: 1px solid black;
+    right: 330px;
+    bottom: 0px;
+    height: 140px;
+    width: 50px;
+  }
+  .tools-box {
+    position: absolute;
+    overflow: hidden;
+
+    // border: 1px solid black;
+    width: 120px;
+    &.right {
+      height: 100%;
+      right: 0px;
+    }
+
+    &.left {
+      height: 100px;
+      left: 10px;
+      bottom: 10px;
+      position: absolute;
+    }
+    .tool {
+      border:1px solid black;
+      border-bottom: 0px;
+      width: 120px;
+      height: 120px;
+
+      &.seed {}
+      &.water {}
+      &.pest-control {}
+      &.plant-food {}
+      &.storehouse {}
+      &.harvest {
+        border-bottom: 1px;
+        height: 100%;
+        width:118px;
+      }
+    }
+  }
+}
