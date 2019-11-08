@@ -1,0 +1,47 @@
+{
+  "name": "RPAScriptEditor",
+  "version": "0.1.1",
+  "description": "RPA Script Editor",
+  "main": "index.js",
+  "scripts": {
+    "dev": "gulp dev",
+    "start": "electron .",
+    "build_win": "electron-builder --win"
+  },
+  "author": "Tid",
+  "license": "ISC",
+  "devDependencies": {
+    "blockly": "^3.20191014.3",
+    "ejs": "^2.7.1",
+    "electron": "^7.0.1",
+    "electron-builder": "^22.1.0",
+    "file-saver": "^2.0.2",
+    "gulp": "^4.0.2",
+    "gulp-clean": "^0.4.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-connect": "^5.7.0",
+    "gulp-ejs": "^4.1.2",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-watch": "^5.0.1",
+    "node-sass": "^4.12.0",
+    "package.json": "^2.0.1",
+    "yamljs": "^0.3.0"
+  },
+  "build": {
+    "appId": "com.sample.app",
+    "artifactName": "${name}-${os}-${arch}-${version}.${ext}",
+    "win": {
+      "target": [
+        "portable"
+      ],
+      "icon": "256x256.png"
+    },
+    "files": [
+      "index.js",
+      "public/**/*"
+    ]
+  },
+  "dependencies": {}
+}

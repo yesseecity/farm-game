@@ -1,0 +1,7 @@
+function hello() {
+  console.log('Hello World')
+}
+
+hello()
+
+//# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluaXQuanMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBIiwiZmlsZSI6Im1haW4uanMiLCJzb3VyY2VzQ29udGVudCI6WyJmdW5jdGlvbiBoZWxsbygpIHtcbiAgY29uc29sZS5sb2coJ0hlbGxvIFdvcmxkJylcbn1cblxuaGVsbG8oKVxuIl19
