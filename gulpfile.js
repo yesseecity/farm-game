@@ -21,7 +21,10 @@ const paths = {
     dest: './temp/css/'
   },
   css: {
-    src: ['./temp/css/*.css'],
+    src: [
+      './temp/css/*.css',
+      './node_modules/jquery-ui-dist/jquery-ui.min.css'
+    ],
     dest: './public/css/'
   },
   scripts: {
@@ -33,6 +36,8 @@ const paths = {
   jsLib: {
     src: [
       './src/lib/*.js',
+      './node_modules/jquery/dist/jquery.min.js',
+      './node_modules/jquery-ui-dist/jquery-ui.min.js'
     ],
     dest: './public/js/'
   },

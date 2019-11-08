@@ -1,5 +1,1 @@
-function hello() {
-  console.log('Hello World')
-}
-
-hello()
+$('.sub-frame').draggable()
