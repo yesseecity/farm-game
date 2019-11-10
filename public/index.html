@@ -6,24 +6,27 @@
     <script src="./js/lib.js"></script>
     <script src='./js/main.js' async></script>
     <link rel="stylesheet" type="text/css" href="./css/main.css">
+    <!-- <link rel="stylesheet" rel="stylesheet" href="./media/all.min.css"> -->
 </head>
 <body>
     <div class="main-frame">
         <div class="account-info">
+            <div class="level">Lv 1</div>
             <div class="exp">
                 <div class="full-exp">
                     <div class="real-exp"></div>
                 </div>
                 <span class="text">xp</span>
             </div>
-            <div class="level"></div>
             <div class="money">$ 100,010</div>
         </div>
         <div class="shop">
-            shop
+            <i class="fas fa-store"></i>
         </div>
         <div class="weather">
-            weather
+            <i class="fas fa-cloud-moon"></i>
+            <span class="temperature-text">25</span>
+            <i class="fas fa-temperature-low"></i>
         </div>
         <div class="field">
             <div class="sub-field"></div>
@@ -61,16 +64,26 @@
             mail-box
         </div>
         <div class="tools-box right">
-            <div class="tool seed">播種</div>
-            <div class="tool water">澆水</div>
-            <div class="tool pest-control">驅蟲</div>
-            <div class="tool plant-food">施肥</div>
-            <div class="tool storehouse">倉庫</div>
+            <div class="tool seed" onclick="subframe('seed')">
+                播種
+            </div>
+            <div class="tool water" onclick="subframe('water')">
+                <i class="fas fa-tint"></i>
+            </div>
+            <div class="tool pest-control" onclick="subframe('pest-control')">
+                <i class="fas fa-spider"></i>
+            </div>
+            <div class="tool plant-food" onclick="subframe('plant-food')">
+                施肥
+            </div>
+            <div class="tool weeding" onclick="subframe('weeding')">
+                除草
+            </div>
         </div>
         <div class="tools-box left">
             <div class="tool harvest">收成</div>
         </div>
-        <div class="sub-frame">
+        <div class="sub-frame" id="sub-frame">
             <div class="description">
             子畫面-道具說明 
             </div>

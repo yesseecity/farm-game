@@ -41,8 +41,9 @@ h1 {
         height: 100%
       }
       .text {
-        right: 5px;
+        right: -25px;
         top: 0px;
+        position: absolute;
       }
     }
     .level {
@@ -51,6 +52,8 @@ h1 {
       height: 50px;
       left: 0px;
       top: 0px;
+      font-size: 30px;
+
     }
     .money {
       height: 24px;
@@ -61,17 +64,34 @@ h1 {
   }
 
   .shop {
-    border: 1px solid black;
+    // border: 1px solid black;
     right: 330px;
-    height: 60px;
-    width: 60px;
+    font-size: 35px;
   }
 
   .weather {
-    border: 1px solid black;
+    // border: 1px solid black;
     right: 130px;
     height: 100px;
     width: 100px;
+    padding: 5px;
+    .fa-cloud-moon {
+      font-size: 50px;
+      position: absolute;
+      right: 0;
+    }
+    .fa-temperature-low {
+      font-size: 30px;
+      position: absolute;
+      left: 27px;
+      top: 11px;
+    }
+    .temperature-text {
+      font-size: 20px;
+      position: absolute;
+      left: 2px;
+      top: 10px;
+    }
   }
 
   .field {
@@ -289,10 +309,24 @@ h1 {
       height: 120px;
 
       &.seed {}
-      &.water {}
-      &.pest-control {}
+      &.water {
+        .fa-tint {
+          font-size: 50px;
+          position: absolute;
+          left: 50px;
+          top: 30px;
+        }
+      }
+      &.pest-control {
+        .fa-spider {
+          font-size: 50px;
+          position: absolute;
+          left: 50px;
+          top: 30px;
+        }
+      }
       &.plant-food {}
-      &.storehouse {}
+      &.weeding {}
       &.harvest {
         border-bottom: 1px;
         height: 100%;
@@ -309,6 +343,9 @@ h1 {
   background:  white;
   left: 120px;
   top: 90px;
+  &.hidden {
+    display: none
+  }
   .description {
     position: relative;
     width: 100%;

@@ -22,8 +22,9 @@ const paths = {
   },
   css: {
     src: [
+      './node_modules/@fortawesome/fontawesome-free/css/all.css',
+      './node_modules/jquery-ui-dist/jquery-ui.min.css',
       './temp/css/*.css',
-      './node_modules/jquery-ui-dist/jquery-ui.min.css'
     ],
     dest: './public/css/'
   },
@@ -48,9 +49,15 @@ const paths = {
   },
   media: {
     src: [
-      './src/media/*'
+      './src/media/*',
     ],
     dest: './public/media'
+  },
+  webfonts: {
+    src: [
+      './node_modules/@fortawesome/fontawesome-free/webfonts/*'
+    ],
+    dest: './public/webfonts/'
   }
 }
 
@@ -96,6 +103,10 @@ function concatCss() {
 }
 
 function copy() {
+  gulp.src(paths.webfonts.src)
+  .pipe(gulp.dest(paths.webfonts.dest))
+
+
   return gulp.src(paths.media.src)
   .pipe(gulp.dest(paths.media.dest))
 }

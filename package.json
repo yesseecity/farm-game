@@ -11,6 +11,7 @@
   "author": "Tid",
   "license": "ISC",
   "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.11.2",
     "blockly": "^3.20191014.3",
     "ejs": "^2.7.1",
     "electron": "^7.0.1",
