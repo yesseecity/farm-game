@@ -45,8 +45,12 @@ class SubField extends React.Component {
 class Field extends React.Component {
   renderSubField() {
     let field_list = [];
-    for(var i=0;i<=20;i++) {
-      field_list.push(<div className="sub-field" value={i}></div>)
+    for(var i=1;i<=20;i++) {
+      let enableSate = false
+      if (i < 10) {
+        enableSate = true
+      }
+      field_list.push(<SubField enable={enableSate}  value={i} />)
     }
     return field_list
   }
@@ -74,14 +78,14 @@ class ToolBoxRight extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      hidden: true,
-      hiddenOffset: 'hidden',
-      arrowIconRotate: ''
+        hidden: false,
+        hiddenOffset: '',
+        arrowIconRotate: 'rotate'
     }
   }
   hiddenHandler(){
     if (this.state.hidden) {
-      this.setState ({
+      this.setState({
         hidden: false,
         hiddenOffset: '',
         arrowIconRotate: 'rotate'
@@ -101,19 +105,19 @@ class ToolBoxRight extends React.Component {
         <div className="arrow" onClick={()=>this.hiddenHandler()}>
           <i className={'fas fa-angle-left '+this.state.arrowIconRotate}></i>
         </div>
-        <div className="tool seed" onclick="subframe('seed')">
+        <div className="tool seed" onClick={()=>{this.props.clickHandler('Seed')}}>
           播種
         </div>
-        <div className="tool water" onclick="subframe('water')">
+        <div className="tool water" onClick={()=>{this.props.clickHandler('Water')}}>
           <i className="fas fa-tint"></i>
         </div>
-        <div className="tool pest-control" onclick="subframe('pest-control')">
+        <div className="tool pest-control" onClick={()=>{this.props.clickHandler('PestControl')}}>
           <i className="fas fa-spider"></i>
         </div>
-        <div className="tool plant-food" onclick="subframe('plant-food')">
+        <div className="tool plant-food" onClick={()=>{this.props.clickHandler('PlantFood')}}>
           施肥
         </div>
-        <div className="tool weeding" onclick="subframe('weeding')">
+        <div className="tool weeding" onClick={()=>{this.props.clickHandler('Weeding')}}>
           除草
         </div>
       </div>
@@ -125,45 +129,77 @@ class ToolBoxLeft extends React.Component {
   render() {
     return (
       <div className="tools-box left">
-        <div className="tool harvest">收成</div>
+        <div className="tool harvest" onClick={()=>{this.props.clickHandler('Harvest')}}>
+          收成
+        </div>
       </div>
     );
   }
 }
 
-class SubFrame extends React.Component {
-  componentDidMount() {
-    $('.sub-frame').draggable();
-  }
-  dismiss() {
-    this.unmountMe();
-  }
-  render() {
-    return (
-      <div className="sub-frame" id="sub-frame">
-        <div className="description">
-        子畫面-道具說明 
-        </div>
-        <i className="fas fa-times" onclick={()=>this.dismiss()}></i>
-        <div className="items">
-          <div className="item">道具1</div>
-          <div className="item">道具2</div>
-          <div className="item">道具3</div>
-          <div className="item">道具4</div>
-        </div>
-      </div>
-    );
-  }
-}
 
 class MainFrame extends React.Component {
   constructor(props) {
     super(props)
+    this.state = {
+      Seed: false,
+      Water: false,
+      PestControl: false,
+      PlantFood: false,
+      Weeding: false,
+      Harvest: false
+    }
+  }
+  openSubFrame(type) {
+    var frameSetting = {
+      Seed: false,
+      Water: false,
+      PestControl: false,
+      PlantFood: false,
+      Weeding: false,
+      Harvest: false
+    };
+    frameSetting[type]=true;
 
+    this.setState(frameSetting);
+  }
+  removeSubFrame() {
+    this.setState({
+      Seed: false,
+      Water: false,
+      PestControl: false,
+      PlantFood: false,
+      Weeding: false,
+      Harvest: false
+    });
+  }
+  rendSubFrame() {
+    var subframe_list = [];
+    var subframeSeed = this.state.Seed?<SubFrameSeed clickHandler={()=>{this.removeSubFrame()}}/>:''
+    subframe_list.push(subframeSeed);
+    
+    var subframeWater = this.state.Water?<SubFrameWater clickHandler={()=>{this.removeSubFrame()}}/>:''
+    subframe_list.push(subframeWater);
+    
+    var subframePestControl = this.state.PestControl?<SubFramePestControl clickHandler={()=>{this.removeSubFrame()}}/>:''
+    subframe_list.push(subframePestControl);
+    
+    var subframePlantFood = this.state.PlantFood ?<SubFramePlantFood clickHandler={()=>{this.removeSubFrame()}}/>:''
+    subframe_list.push(subframePlantFood);
+    
+    var subframeWeeding = this.state.Weeding?<SubFrameWeeding clickHandler={()=>{this.removeSubFrame()}}/>:''
+    subframe_list.push(subframeWeeding);
+    
+    var subframeHarvest = this.state.Harvest?<SubFrameHarvest clickHandler={()=>{this.removeSubFrame()}}/>:''
+    subframe_list.push(subframeHarvest);
+    return subframe_list
+  }
+  click_main(e) {
+    e.stopPropagation()
   }
   render() {
     return (
-      <div className="main-frame">
+      <div className="main-frame" onClick={this.click_main}>
         <AccountInfo />
         <Shop />
         <Weather />
@@ -179,9 +215,9 @@ class MainFrame extends React.Component {
           </div>
         </div>
         <MailBox />
-        <ToolBoxRight />
-        <ToolBoxLeft />
-        <SubFrame />
+        <ToolBoxRight clickHandler={(type)=>{this.openSubFrame(type)}} />
+        <ToolBoxLeft clickHandler={(type)=>{this.openSubFrame(type)}} />
+        {this.rendSubFrame()}
       </div>
     );
   }
@@ -189,5 +225,184 @@ class MainFrame extends React.Component {
 
 ReactDOM.render(
   <MainFrame />, 
-  document.getElementById('root')
+  document.body
 )
+class SubFrameHarvest extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+  componentDidMount() {
+    $('.sub-frame').draggable();
+  }
+  close(e) {
+    e.stopPropagation()
+    this.props.clickHandler()
+  }
+  render() {
+    return (
+      <div className="sub-frame" id="sub-frame">
+        <div className="description">
+        收成-子畫面-道具說明 
+        </div>
+        <div className="items">
+          <div className="item">道具1</div>
+          <div className="item">道具2</div>
+          <div className="item">道具3</div>
+          <div className="item">道具4</div>
+        </div>
+        <i className="fas fa-times" onClick={()=>{this.props.clickHandler()}}></i>
+      </div>
+    );
+  }
+}
+
+
+class SubFramePestControl extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+  componentDidMount() {
+    $('.sub-frame').draggable();
+  }
+  close(e) {
+    e.stopPropagation()
+    this.props.clickHandler()
+  }
+  render() {
+    return (
+      <div className="sub-frame" id="sub-frame">
+        <div className="description">
+        蟲害防治-子畫面-道具說明 
+        </div>
+        <div className="items">
+          <div className="item">道具1</div>
+          <div className="item">道具2</div>
+          <div className="item">道具3</div>
+          <div className="item">道具4</div>
+        </div>
+        <i className="fas fa-times" onClick={()=>{this.props.clickHandler()}}></i>
+      </div>
+    );
+  }
+}
+
+
+class SubFramePlantFood extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+  componentDidMount() {
+    $('.sub-frame').draggable();
+  }
+  close(e) {
+    e.stopPropagation()
+    this.props.clickHandler()
+  }
+  render() {
+    return (
+      <div className="sub-frame" id="sub-frame">
+        <div className="description">
+        肥料-子畫面-道具說明 
+        </div>
+        <div className="items">
+          <div className="item">道具1</div>
+          <div className="item">道具2</div>
+          <div className="item">道具3</div>
+          <div className="item">道具4</div>
+        </div>
+        <i className="fas fa-times" onClick={()=>{this.props.clickHandler()}}></i>
+      </div>
+    );
+  }
+}
+
+
+class SubFrameSeed extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+  componentDidMount() {
+    $('.sub-frame').draggable();
+  }
+  close(e) {
+    e.stopPropagation()
+    this.props.clickHandler()
+  }
+  render() {
+    return (
+      <div className="sub-frame" id="sub-frame">
+        <div className="description">
+        種子-子畫面-道具說明 
+        </div>
+        <div className="items">
+          <div className="item">道具1</div>
+          <div className="item">道具2</div>
+          <div className="item">道具3</div>
+          <div className="item">道具4</div>
+        </div>
+        <i className="fas fa-times" onClick={()=>{this.props.clickHandler()}}></i>
+      </div>
+    );
+  }
+}
+
+
+class SubFrameWater extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+  componentDidMount() {
+    $('.sub-frame').draggable();
+  }
+  close(e) {
+    e.stopPropagation()
+    this.props.clickHandler()
+  }
+  render() {
+    return (
+      <div className="sub-frame" id="sub-frame">
+        <div className="description">
+        澆水-子畫面-道具說明 
+        </div>
+        <div className="items">
+          <div className="item">道具1</div>
+          <div className="item">道具2</div>
+          <div className="item">道具3</div>
+          <div className="item">道具4</div>
+        </div>
+        <i className="fas fa-times" onClick={()=>{this.props.clickHandler()}}></i>
+      </div>
+    );
+  }
+}
+
+
+class SubFrameWeeding extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+  componentDidMount() {
+    $('.sub-frame').draggable();
+  }
+  close(e) {
+    e.stopPropagation()
+    this.props.clickHandler()
+  }
+  render() {
+    return (
+      <div className="sub-frame" id="sub-frame">
+        <div className="description">
+        除草-子畫面-道具說明 
+        </div>
+        <div className="items">
+          <div className="item">道具1</div>
+          <div className="item">道具2</div>
+          <div className="item">道具3</div>
+          <div className="item">道具4</div>
+        </div>
+        <i className="fas fa-times" onClick={()=>{this.props.clickHandler()}}></i>
+      </div>
+    );
+  }
+}
+

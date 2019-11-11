@@ -61,7 +61,7 @@ const paths = {
   },
   jsx: {
     src: [
-      './src/jsx/index.jsx'
+      './src/jsx/*.jsx'
     ],
     dest: './public/jsx'
   }
@@ -83,6 +83,13 @@ function compileSass() {
 
 
 function concatJs() {
+  gulp.src(paths.jsx.src)
+    .pipe(sourcemaps.init())
+    .pipe(gulpConcat('index.jsx'))
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest(paths.jsx.dest))
+    .pipe(gulpConnect.reload());
+
   return gulp.src(paths.scripts.src)
     .pipe(sourcemaps.init())
     .pipe(gulpConcat('main.js'))
@@ -109,8 +116,8 @@ function concatCss() {
 }
 
 function copy() {
-  gulp.src(paths.jsx.src)
-  .pipe(gulp.dest(paths.jsx.dest))
+  // gulp.src(paths.jsx.src)
+  // .pipe(gulp.dest(paths.jsx.dest))
 
   gulp.src(paths.webfonts.src)
   .pipe(gulp.dest(paths.webfonts.dest))
@@ -149,7 +156,7 @@ function serverConnect() {
 }
 
 function watch() {
-  gulp.watch(paths.jsx.src, gulp.series(copy));
+  gulp.watch(paths.jsx.src, gulp.series(concatJs));
   gulp.watch(paths.scripts.src, gulp.series(concatJs));
   gulp.watch(paths.template.src, gulp.series(buildHtml));
   gulp.watch(paths.template.xml, gulp.series(buildHtml));
