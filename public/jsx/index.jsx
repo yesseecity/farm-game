@@ -36,9 +36,13 @@ class Weather extends React.Component{
   }
 }
 class SubField extends React.Component {
+  constructor(props) {
+    super(props)
+  }
   render() {
     return (
-      <div className="sub-field"></div>
+      <div className={'sub-field '+this.props.enableSate}></div>
+      
     );
   }
 }
@@ -46,11 +50,11 @@ class Field extends React.Component {
   renderSubField() {
     let field_list = [];
     for(var i=1;i<=20;i++) {
-      let enableSate = false
+      let enableSate = 'disable'
       if (i < 10) {
-        enableSate = true
+        enableSate = ''
       }
-      field_list.push(<SubField enable={enableSate}  value={i} />)
+      field_list.push(<SubField enableSate={enableSate}  value={i} />)
     }
     return field_list
   }
@@ -67,7 +71,7 @@ class Field extends React.Component {
 class MailBox extends React.Component {
   render() {
     return (
-      <div className="mail-box">
+      <div className="mail-box" onClick={()=>{this.props.clickHandler('MailBox')}}>
         mail-box
       </div>
     );
@@ -157,7 +161,8 @@ class MainFrame extends React.Component {
       PestControl: false,
       PlantFood: false,
       Weeding: false,
-      Harvest: false
+      Harvest: false,
+      MailBox: false,
     };
     frameSetting[type]=true;
 
@@ -170,7 +175,8 @@ class MainFrame extends React.Component {
       PestControl: false,
       PlantFood: false,
       Weeding: false,
-      Harvest: false
+      Harvest: false,
+      MailBox: false,
     });
   }
   rendSubFrame() {
@@ -192,6 +198,9 @@ class MainFrame extends React.Component {
     
     var subframeHarvest = this.state.Harvest?<SubFrameHarvest clickHandler={()=>{this.removeSubFrame()}}/>:''
     subframe_list.push(subframeHarvest);
+
+    var subframeMailBox = this.state.MailBox?<SubFrameMailBox clickHandler={()=>{this.removeSubFrame()}}/>:''
+    subframe_list.push(subframeMailBox);
     return subframe_list
   }
   click_main(e) {
@@ -214,7 +223,7 @@ class MainFrame extends React.Component {
             <div className="fence-6"></div>
           </div>
         </div>
-        <MailBox />
+        <MailBox clickHandler={(type)=>{this.openSubFrame(type)}} />
         <ToolBoxRight clickHandler={(type)=>{this.openSubFrame(type)}} />
         <ToolBoxLeft clickHandler={(type)=>{this.openSubFrame(type)}} />
         {this.rendSubFrame()}
@@ -243,6 +252,36 @@ class SubFrameHarvest extends React.Component {
       <div className="sub-frame" id="sub-frame">
         <div className="description">
         收成-子畫面-道具說明 
+        </div>
+        <div className="items">
+          <div className="item">道具1</div>
+          <div className="item">道具2</div>
+          <div className="item">道具3</div>
+          <div className="item">道具4</div>
+        </div>
+        <i className="fas fa-times" onClick={()=>{this.props.clickHandler()}}></i>
+      </div>
+    );
+  }
+}
+
+
+class SubFrameMailBox extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+  componentDidMount() {
+    $('.sub-frame').draggable();
+  }
+  close(e) {
+    e.stopPropagation()
+    this.props.clickHandler()
+  }
+  render() {
+    return (
+      <div className="sub-frame" id="sub-frame">
+        <div className="description">
+        信箱-子畫面-道具說明 
         </div>
         <div className="items">
           <div className="item">道具1</div>

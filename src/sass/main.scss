@@ -106,9 +106,18 @@ h1 {
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
     transform: rotate3d(1, 0, 0, -144deg);
     // transform: skewX(-10deg) rotateX(30deg);
+    background-color: #175d16;
     .sub-field {
       position: relative;
       border: 1px solid black;
+      cursor: pointer;
+      &.disable {
+        cursor: not-allowed;
+        background-color: gray;
+        &:hover {
+          background-color: gray;
+        }
+      }
       &:hover {
         background-color: #06ff00;
       }
@@ -286,6 +295,9 @@ h1 {
     bottom: 0px;
     height: 140px;
     width: 50px;
+    &:hover {
+      cursor: pointer;
+    }
   }
   .tools-box {
     // border: 1px solid black;
