@@ -9,6 +9,7 @@ h1 {
 }
 
 .main-frame {
+  overflow: hidden;
   width: 800px;
   height: 600px;
   border: 1px solid black;
@@ -287,26 +288,63 @@ h1 {
     width: 50px;
   }
   .tools-box {
-    overflow: hidden;
     // border: 1px solid black;
     width: 120px;
     &.right {
+      transition: right 0.5s;
+      overflow-y: hidden;
       height: 100%;
       right: 0px;
+      width: 140px;
+      &.hidden {
+        right: -120px;
+      }
+      .arrow {
+        border: 1px solid black;
+        border-radius: 6px;
+        width: 40px;
+        height: 70px;
+        font-size: 36px;
+        left: 0px;
+        top: 229px;
+        &:hover{
+          cursor: pointer;
+        }
+        .fas {
+          transition: transform 0.5s;
+          transform: rotateZ(0deg);
+          position: relative;
+          top: 4px;
+          left: 1px;
+
+        }
+        .rotate{
+          transform: rotateZ(180deg);
+        }
+      }
+      .tool{
+         right: -20px;
+      }
     }
 
     &.left {
+      overflow: hidden;
       height: 100px;
       left: 10px;
       bottom: 10px;
       position: absolute;
     }
     .tool {
+      background-color: white;
       position: relative;
       border:1px solid black;
       border-bottom: 0px;
       width: 120px;
       height: 120px;
+
+      &:hover {
+        cursor: pointer;
+      }
 
       &.seed {}
       &.water {
@@ -338,13 +376,23 @@ h1 {
 
 .sub-frame {
   border: 1px solid black;
+  border-radius: 5px;
   width: 400px;
   height: 300px;
   background:  white;
   left: 120px;
   top: 90px;
+  padding: 5px;
   &.hidden {
     display: none
+  }
+  .fa-times {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    &:hover {
+      cursor: pointer;
+    }
   }
   .description {
     position: relative;

@@ -58,6 +58,12 @@ const paths = {
       './node_modules/@fortawesome/fontawesome-free/webfonts/*'
     ],
     dest: './public/webfonts/'
+  },
+  jsx: {
+    src: [
+      './src/jsx/index.jsx'
+    ],
+    dest: './public/jsx'
   }
 }
 
@@ -103,12 +109,16 @@ function concatCss() {
 }
 
 function copy() {
+  gulp.src(paths.jsx.src)
+  .pipe(gulp.dest(paths.jsx.dest))
+
   gulp.src(paths.webfonts.src)
   .pipe(gulp.dest(paths.webfonts.dest))
 
 
   return gulp.src(paths.media.src)
   .pipe(gulp.dest(paths.media.dest))
+  .pipe(gulpConnect.reload())
 }
 
 
@@ -139,6 +149,7 @@ function serverConnect() {
 }
 
 function watch() {
+  gulp.watch(paths.jsx.src, gulp.series(copy));
   gulp.watch(paths.scripts.src, gulp.series(concatJs));
   gulp.watch(paths.template.src, gulp.series(buildHtml));
   gulp.watch(paths.template.xml, gulp.series(buildHtml));

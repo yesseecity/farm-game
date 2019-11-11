@@ -1,6 +1,3 @@
-$('.sub-frame').draggable()
-
-
 var audioElement = new Audio('media/farmgame-bgm.mp3');
 audioElement.addEventListener('loadeddata', () => {
   let duration = audioElement.duration;
