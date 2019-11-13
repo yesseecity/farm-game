@@ -19,8 +19,9 @@ class SubFrameWeeding extends React.Component {
   componentDidMount() {
     $('.sub-frame').draggable();
   }
-  select() {
-    console.log('select')
+  select(itemName) {
+    console.log('select: ', itemName)
+    this.props.changeMouseState(itemName)
     this.close()
   }
   close(e) {
@@ -32,7 +33,7 @@ class SubFrameWeeding extends React.Component {
       for (let item of this.items) {
         itemsDom.push(<div 
           className={'item '+item.name}
-          onClick={()=>{this.select()}}
+          onClick={()=>{this.select(item.name)}}
           >{item.ct_name}</div>)
       }
 

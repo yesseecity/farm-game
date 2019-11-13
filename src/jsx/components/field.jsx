@@ -5,7 +5,7 @@ class SubField extends React.Component {
       level: 1,
       field_id: this.props.fieldId
     }
-    if (this.props.enableSate == 'disable') {
+    if (this.props.enableState == 'disable') {
       this.state.level = 0
     } 
   }
@@ -20,15 +20,20 @@ class SubField extends React.Component {
       let levelName = 'level'+this.state.level.toString();
       subClass += fieldImgClassInfo[levelName];
     }
-    subClass += ' '+this.props.enableSate;
+    subClass += ' '+this.props.enableState;
     return subClass
   }
   clickField() {
     let newState = {
       field_id: this.state.field_id
     };
+    if (this.state.field_id < 12) return;
     if (this.state.level == 2) return;
-    newState.level = this.state.level+1;
+    let weedingTools = ['grove', 'sickle'];
+    if (weedingTools.indexOf(this.props.mouseState) > -1) {
+      newState.level = 2
+    }
+    // newState.level = this.state.level+1;
     this.setState(newState);
 
     console.log('click field');
@@ -47,6 +52,9 @@ class SubField extends React.Component {
   }
 }
 class Field extends React.Component {
+  constructor(props) {
+    super(props)
+  }
   renderSubField() {
     let field_list = [];
     for(var i=1;i<=20;i++) {
@@ -54,7 +62,12 @@ class Field extends React.Component {
       if (i < 12) {
         enableSate = 'disable';
       }
-      field_list.push(<SubField enableSate={enableSate}  fieldId={i.toString()} />);
+      let dom = <SubField 
+        enableState={enableSate} 
+        fieldId={i.toString()} 
+        mouseState={this.props.mouseState}
+      />
+      field_list.push(dom);
     }
     return field_list;
   }

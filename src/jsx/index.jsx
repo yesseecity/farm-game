@@ -46,141 +46,162 @@ class MailBox extends React.Component {
   }
 }
 
-class ToolBoxRight extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-        hidden: false,
-        hiddenOffset: '',
-        arrowIconRotate: 'rotate'
-    }
-  }
-  hiddenHandler(){
-    if (this.state.hidden) {
-      this.setState({
-        hidden: false,
-        hiddenOffset: '',
-        arrowIconRotate: 'rotate'
-      });
-    } else {
-      this.setState({
-        hidden: true,
-        hiddenOffset: 'hidden',
-        arrowIconRotate: ''
-      });
-    }
-  }
-
-  render() {
-    return (
-      <div className={'tools-box right '+this.state.hiddenOffset}>
-        <div className="tool weeding" onClick={()=>{this.props.clickHandler('Weeding')}}>
-          除草
-        </div>
-        <div className="arrow" onClick={()=>this.hiddenHandler()}>
-          <i className={'fas fa-angle-left '+this.state.arrowIconRotate}></i>
-        </div>
-        <div className="tool seed" onClick={()=>{this.props.clickHandler('Seed')}}>
-          播種
-        </div>
-        <div className="tool water" onClick={()=>{this.props.clickHandler('Water')}}>
-          <i className="fas fa-tint"></i>
-        </div>
-        <div className="tool pest-control" onClick={()=>{this.props.clickHandler('PestControl')}}>
-          <i className="fas fa-spider"></i>
-        </div>
-        <div className="tool plant-food" onClick={()=>{this.props.clickHandler('PlantFood')}}>
-          施肥
-        </div>
-      </div>
-    );
-  }
-}
-
-class ToolBoxLeft extends React.Component {
-  render() {
-    return (
-      <div className="tools-box left">
-        <div className="tool harvest" onClick={()=>{this.props.clickHandler('Harvest')}}>
-          收成
-        </div>
-      </div>
-    );
-  }
-}
-
-
 class MainFrame extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
-      Seed: false,
-      Water: false,
-      PestControl: false,
-      PlantFood: false,
-      Weeding: false,
-      Harvest: false
+    var defaultFrame = {
+      frame: {
+        Seed: false,
+        Water: false,
+        PestControl: false,
+        PlantFood: false,
+        Weeding: false,
+        Harvest: false,
+        MailBox: false,
+      }
+    };
+    this.mouseState = {
+      mouse: ''
     }
+    this.state = Object.assign({}, defaultFrame, this.mouseState)
   }
   openSubFrame(type) {
-    var frameSetting = {
-      Seed: false,
-      Water: false,
-      PestControl: false,
-      PlantFood: false,
-      Weeding: false,
-      Harvest: false,
-      MailBox: false,
-    };
-    frameSetting[type]=true;
-
-    this.setState(frameSetting);
+    var defaultFrame = {
+      frame: {
+        Seed: false,
+        Water: false,
+        PestControl: false,
+        PlantFood: false,
+        Weeding: false,
+        Harvest: false,
+        MailBox: false,
+      }
+    }
+    defaultFrame.frame[type]=true;
+    var newState = Object.assign({}, defaultFrame, this.mouseState)
+    this.setState(newState);
   }
-  removeSubFrame() {
-    this.setState({
-      Seed: false,
-      Water: false,
-      PestControl: false,
-      PlantFood: false,
-      Weeding: false,
-      Harvest: false,
-      MailBox: false,
-    });
+  closeSubFrame() {
+    var defaultFrame = {
+      frame: {
+        Seed: false,
+        Water: false,
+        PestControl: false,
+        PlantFood: false,
+        Weeding: false,
+        Harvest: false,
+        MailBox: false,
+      }
+    }
+    var newState = Object.assign({}, defaultFrame, this.mouseState)
+    this.setState(newState);
   }
   rendSubFrame() {
     var subframe_list = [];
-    var subframeSeed = this.state.Seed?<SubFrameSeed clickHandler={()=>{this.removeSubFrame()}}/>:''
-    subframe_list.push(subframeSeed);
-    
-    var subframeWater = this.state.Water?<SubFrameWater clickHandler={()=>{this.removeSubFrame()}}/>:''
-    subframe_list.push(subframeWater);
-    
-    var subframePestControl = this.state.PestControl?<SubFramePestControl clickHandler={()=>{this.removeSubFrame()}}/>:''
-    subframe_list.push(subframePestControl);
-    
-    var subframePlantFood = this.state.PlantFood ?<SubFramePlantFood clickHandler={()=>{this.removeSubFrame()}}/>:''
-    subframe_list.push(subframePlantFood);
-    
-    var subframeWeeding = this.state.Weeding?<SubFrameWeeding clickHandler={()=>{this.removeSubFrame()}}/>:''
-    subframe_list.push(subframeWeeding);
-    
-    var subframeHarvest = this.state.Harvest?<SubFrameHarvest clickHandler={()=>{this.removeSubFrame()}}/>:''
-    subframe_list.push(subframeHarvest);
 
-    var subframeMailBox = this.state.MailBox?<SubFrameMailBox clickHandler={()=>{this.removeSubFrame()}}/>:''
-    subframe_list.push(subframeMailBox);
+    if (this.state.frame.Weeding) {
+      let subframeWeeding = <SubFrameWeeding 
+        clickHandler={()=>{this.closeSubFrame()}}
+        changeMouseState={(state)=>this.changeMouseState(state)}
+      />
+      subframe_list.push(subframeWeeding);
+    }
+
+    if (this.state.frame.Seed) {
+      let subframeSeed = <SubFrameSeed 
+        clickHandler={()=>{this.closeSubFrame()}}
+        changeMouseState={(state)=>this.changeMouseState(state)}
+      />      
+      subframe_list.push(subframeSeed);
+    }
+
+    if (this.state.frame.Water) {
+      let subframeWater = <SubFrameWater 
+        clickHandler={()=>{this.closeSubFrame()}}
+        changeMouseState={(state)=>this.changeMouseState(state)}
+      />      
+      subframe_list.push(subframeWater);
+    }
+
+    if (this.state.frame.PestControl) {
+      let subframePestControl = <SubFramePestControl 
+        clickHandler={()=>{this.closeSubFrame()}}
+        changeMouseState={(state)=>this.changeMouseState(state)}
+      />      
+      subframe_list.push(subframePestControl);
+    }
+
+    if (this.state.frame.PlantFood) {
+      let subframePlantFood = <SubFramePlantFood 
+        clickHandler={()=>{this.closeSubFrame()}}
+        changeMouseState={(state)=>this.changeMouseState(state)}
+      />      
+      subframe_list.push(subframePlantFood);
+    }
+
+    if (this.state.frame.Harvest) {
+      let subframeHarvest = <SubFrameHarvest 
+        clickHandler={()=>{this.closeSubFrame()}}
+        changeMouseState={(state)=>this.changeMouseState(state)}
+      />      
+      subframe_list.push(subframeHarvest);
+    }
+
+    if (this.state.frame.MailBox) {
+      let subframeMailBox = <SubFrameMailBox 
+        clickHandler={()=>{this.closeSubFrame()}}
+        changeMouseState={(state)=>this.changeMouseState(state)}
+      />      
+      subframe_list.push(subframeHarvest);
+    }
+
     return subframe_list
   }
   click_main(e) {
     e.stopPropagation()
+    e.preventDefault()
+    if (e.button == 0) {
+      // mouse left button
+    } else if (e.button == 2) {
+      // mouse right button
+      this.changeMouseState('')
+    }
+  }
+  changeMouseState(mouseState) {
+    console.log('main-frame mouseState: ', mouseState)
+    var defaultFrame = {
+      frame: {
+        Seed: false,
+        Water: false,
+        PestControl: false,
+        PlantFood: false,
+        Weeding: false,
+        Harvest: false,
+        MailBox: false,
+      }
+    };
+    this.mouseState = {
+      mouse: mouseState
+    }
+    this.setState(Object.assign({}, defaultFrame, this.mouseState));
+  }
+  mouseImg() {
+    if (this.state.mouse == '') {
+      return ''
+    } else {
+      return 'mouse-'+this.state.mouse
+    }
   }
   render() {
     return (
-      <div className="main-frame" onClick={this.click_main}>
+      <div className={'main-frame '+this.mouseImg()} 
+          onClick={(e)=>{this.click_main(e)}}
+          onContextMenu={(e)=>{this.click_main(e)}}
+      >
         <AccountInfo />
         <Shop />
         <Weather />
-        <Field />
+        <Field mouseState={this.state.mouse}/>
         <div className="fence" hidden>
           <div className="fence-divs">
             <div className="fence-1"></div>

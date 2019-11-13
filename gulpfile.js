@@ -61,7 +61,8 @@ const paths = {
   },
   jsx: {
     src: [
-      './src/jsx/**/*.jsx'
+      './src/jsx/components/**/*.jsx',
+      './src/jsx/index.jsx'
     ],
     dest: './public/jsx'
   }
