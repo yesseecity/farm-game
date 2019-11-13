@@ -49,7 +49,7 @@ const paths = {
   },
   media: {
     src: [
-      './src/media/*',
+      './src/media/**/*',
     ],
     dest: './public/media'
   },
@@ -61,7 +61,7 @@ const paths = {
   },
   jsx: {
     src: [
-      './src/jsx/*.jsx'
+      './src/jsx/**/*.jsx'
     ],
     dest: './public/jsx'
   }

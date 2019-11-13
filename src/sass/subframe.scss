@@ -1,0 +1,74 @@
+.sub-frame {
+  border: 1px solid black;
+  border-radius: 5px;
+  width: 400px;
+  height: 300px;
+  background:  white;
+  left: 120px;
+  top: 90px;
+  padding: 5px;
+  &.hidden {
+    display: none
+  }
+  .fa-times {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  .description {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    border-bottom: 1px solid black;
+  }
+  .items {
+    position: relative;
+    padding: 2px;
+    height: 94px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    
+    .item {
+      position: relative;
+      border: 1px solid black;
+      height: 100%;
+      background-color: #dbb961
+    }
+  }
+  &.weeding {
+    background: #a2843b;
+
+    .item {
+      border-color: #94793d;
+      box-shadow: -2px 2px 2px 1px #82682b inset;
+    }
+    .grove {
+      &:hover {
+        cursor: pointer;
+      }
+      background-image: url('../media/images/grove.png');
+      background-repeat: no-repeat;
+      background-size: 90px 90px;
+    }
+    .sickle {
+      &:hover {
+        cursor: pointer;
+      }
+      background-image: url('../media/images/sickle.png');
+      background-repeat: no-repeat;
+      background-size: 90px 90px;
+    }
+    .spray {
+      &:hover {
+        cursor: pointer;
+      }
+      background-image: url('../media/images/spray.png');
+      background-repeat: no-repeat;
+      background-size: 90px 90px;
+    }
+  }
+
+}

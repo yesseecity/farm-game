@@ -1,0 +1,46 @@
+.field {
+  border: 1px solid black;
+  width: 300px;
+  height: 350px;
+  top: 100px;
+  left: 80px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  transform: rotate3d(1, 0, 0, 34deg);
+  // transform: rotate3d(1, 0, 0, -144deg);
+  
+  background-color: #175d16;
+  .sub-field {
+    position: relative;
+    border: 1px solid black;
+    cursor: pointer;
+    // transform: rotateX(180deg);
+    background-repeat: no-repeat;
+    background-size: 78px 78px;
+    &.disable {
+      cursor: not-allowed;
+      background-color: gray;
+      &:hover {
+        background-color: gray;
+      }
+    }
+    &:hover {
+      background-color: #06ff00;
+    }
+
+    .plant {
+      box-shadow: -2px 1px 11px 0px black;
+    }
+
+    &.wasteland {
+    }
+    &.weed {
+      background-image: url('../media/images/weed.png');
+    }
+    &.space {
+      background-image: url('../media/images/space.png');
+      background-color: #b08b44;
+    }
+  }
+}

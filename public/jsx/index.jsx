@@ -1,3 +1,73 @@
+class SubField extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      level: 1,
+      field_id: this.props.fieldId
+    }
+    if (this.props.enableSate == 'disable') {
+      this.state.level = 0
+    } 
+  }
+  fieldImgClass() {
+    var fieldImgClassInfo = {
+      'level0': 'wasteland',
+      'level1': 'weed',
+      'level2': 'space'
+    };
+    var subClass = ' ';
+    if (this.state.level < 3) {
+      let levelName = 'level'+this.state.level.toString();
+      subClass += fieldImgClassInfo[levelName];
+    }
+    subClass += ' '+this.props.enableSate;
+    return subClass
+  }
+  clickField() {
+    let newState = {
+      field_id: this.state.field_id
+    };
+    if (this.state.level == 2) return;
+    newState.level = this.state.level+1;
+    this.setState(newState);
+
+    console.log('click field');
+  }
+  render() {
+    return (
+      <div 
+        className={'sub-field '+this.fieldImgClass()}
+        onClick={()=>{this.clickField()}}
+      >
+      {this.state.level}
+        <div className="plant"></div>
+      </div>
+      
+    );
+  }
+}
+class Field extends React.Component {
+  renderSubField() {
+    let field_list = [];
+    for(var i=1;i<=20;i++) {
+      let enableSate = '';
+      if (i < 12) {
+        enableSate = 'disable';
+      }
+      field_list.push(<SubField enableSate={enableSate}  fieldId={i.toString()} />);
+    }
+    return field_list;
+  }
+
+  render() {
+    return (
+      <div className="field">
+        {this.renderSubField()}
+      </div>
+    );
+  }
+}
+
 class AccountInfo extends React.Component{
   render() {
     return (
@@ -31,38 +101,6 @@ class Weather extends React.Component{
         <i className="fas fa-cloud-moon"></i>
         <span className="temperature-text">25</span>
         <i className="fas fa-temperature-low"></i>
-      </div>
-    );
-  }
-}
-class SubField extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-  render() {
-    return (
-      <div className={'sub-field '+this.props.enableSate}></div>
-      
-    );
-  }
-}
-class Field extends React.Component {
-  renderSubField() {
-    let field_list = [];
-    for(var i=1;i<=20;i++) {
-      let enableSate = 'disable'
-      if (i < 10) {
-        enableSate = ''
-      }
-      field_list.push(<SubField enableSate={enableSate}  value={i} />)
-    }
-    return field_list
-  }
-
-  render() {
-    return (
-      <div className="field">
-        {this.renderSubField()}
       </div>
     );
   }
@@ -106,6 +144,9 @@ class ToolBoxRight extends React.Component {
   render() {
     return (
       <div className={'tools-box right '+this.state.hiddenOffset}>
+        <div className="tool weeding" onClick={()=>{this.props.clickHandler('Weeding')}}>
+          除草
+        </div>
         <div className="arrow" onClick={()=>this.hiddenHandler()}>
           <i className={'fas fa-angle-left '+this.state.arrowIconRotate}></i>
         </div>
@@ -120,9 +161,6 @@ class ToolBoxRight extends React.Component {
         </div>
         <div className="tool plant-food" onClick={()=>{this.props.clickHandler('PlantFood')}}>
           施肥
-        </div>
-        <div className="tool weeding" onClick={()=>{this.props.clickHandler('Weeding')}}>
-          除草
         </div>
       </div>
     );
@@ -419,25 +457,52 @@ class SubFrameWater extends React.Component {
 class SubFrameWeeding extends React.Component {
   constructor(props) {
     super(props)
+    this.items = [
+      {
+        name: "grove",
+        ct_name: "手套"
+      },
+      {
+        name: "sickle",
+        ct_name: "鐮刀"
+      },
+      {
+        name: "spray",
+        ct_name: "生化除草劑"
+      }
+    ]
   }
   componentDidMount() {
     $('.sub-frame').draggable();
   }
+  select() {
+    console.log('select')
+    this.close()
+  }
   close(e) {
-    e.stopPropagation()
+    if (e) e.stopPropagation()
     this.props.clickHandler()
+  }
+  renderItem() {
+    var itemsDom = []
+      for (let item of this.items) {
+        itemsDom.push(<div 
+          className={'item '+item.name}
+          onClick={()=>{this.select()}}
+          >{item.ct_name}</div>)
+      }
+
+      itemsDom.push(<div className="item">未開放</div>)
+    return itemsDom
   }
   render() {
     return (
-      <div className="sub-frame" id="sub-frame">
+      <div className="sub-frame weeding" id="sub-frame">
         <div className="description">
         除草-子畫面-道具說明 
         </div>
         <div className="items">
-          <div className="item">道具1</div>
-          <div className="item">道具2</div>
-          <div className="item">道具3</div>
-          <div className="item">道具4</div>
+          {this.renderItem()}
         </div>
         <i className="fas fa-times" onClick={()=>{this.props.clickHandler()}}></i>
       </div>

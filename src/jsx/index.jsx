@@ -35,38 +35,6 @@ class Weather extends React.Component{
     );
   }
 }
-class SubField extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-  render() {
-    return (
-      <div className={'sub-field '+this.props.enableSate}></div>
-      
-    );
-  }
-}
-class Field extends React.Component {
-  renderSubField() {
-    let field_list = [];
-    for(var i=1;i<=20;i++) {
-      let enableSate = 'disable'
-      if (i < 10) {
-        enableSate = ''
-      }
-      field_list.push(<SubField enableSate={enableSate}  value={i} />)
-    }
-    return field_list
-  }
-
-  render() {
-    return (
-      <div className="field">
-        {this.renderSubField()}
-      </div>
-    );
-  }
-}
 
 class MailBox extends React.Component {
   render() {
@@ -106,6 +74,9 @@ class ToolBoxRight extends React.Component {
   render() {
     return (
       <div className={'tools-box right '+this.state.hiddenOffset}>
+        <div className="tool weeding" onClick={()=>{this.props.clickHandler('Weeding')}}>
+          除草
+        </div>
         <div className="arrow" onClick={()=>this.hiddenHandler()}>
           <i className={'fas fa-angle-left '+this.state.arrowIconRotate}></i>
         </div>
@@ -120,9 +91,6 @@ class ToolBoxRight extends React.Component {
         </div>
         <div className="tool plant-food" onClick={()=>{this.props.clickHandler('PlantFood')}}>
           施肥
-        </div>
-        <div className="tool weeding" onClick={()=>{this.props.clickHandler('Weeding')}}>
-          除草
         </div>
       </div>
     );
