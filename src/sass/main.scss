@@ -335,7 +335,11 @@ h1 {
         cursor: pointer;
       }
 
-      &.seed {}
+      &.seed {
+        background-image: url('../media/images/seed.png');
+        background-repeat: no-repeat;
+        background-size: 120px 120px;
+      }
       &.water {
         .fa-tint {
           font-size: 50px;
@@ -352,7 +356,11 @@ h1 {
           top: 30px;
         }
       }
-      &.plant-food {}
+      &.plant-food {
+        background-image: url('../media/images/plant-food.png');
+        background-repeat: no-repeat;
+        background-size: 120px 120px;
+      }
       &.weeding {
         background-image: url('../media/images/Gardening_14-512.png');
         background-repeat: no-repeat;
@@ -378,11 +386,13 @@ h1 {
 }
 .mouse-white-radish,
 .mouse-cauliflower,
-.mouse-qingjiang,
 .mouse-persimmon,
 .mouse-seed {
   cursor:url(../media/images/mouse-seed.png), pointer;
 }
-.mouse-seeding {
-  cursor:url(../media/images/mouse-seeding.png), pointer;
+.mouse-qingjiang{
+  cursor:url(../media/images/mouse-seed2.png), pointer;
+}
+.mouse-plant-food {
+  cursor:url(../media/images/mouse-plant-food.png), pointer;
 }

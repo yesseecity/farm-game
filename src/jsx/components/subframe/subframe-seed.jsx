@@ -49,7 +49,7 @@ class SubFrameSeed extends React.Component {
   }
   render() {
     return (
-      <div className="sub-frame" id="sub-frame">
+      <div className="sub-frame seeds" id="sub-frame">
         <div className="description">
         種子-子畫面-道具說明 
         </div>

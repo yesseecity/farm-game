@@ -16,11 +16,6 @@ class SubFramePlantFood extends React.Component {
         name: "plant-food",
         ct_name: "道具3",
         desc: "說明欄"
-      },
-      {
-        name: "plant-food",
-        ct_name: "道具4",
-        desc: "說明欄"
       }
     ];
   }
@@ -44,12 +39,13 @@ class SubFramePlantFood extends React.Component {
           onClick={()=>{this.select(item.name)}}
           >{item.ct_name}</div>)
       }
+      itemsDom.push(<div className="item">未開放</div>)
 
     return itemsDom
   }
   render() {
     return (
-      <div className="sub-frame" id="sub-frame">
+      <div className="sub-frame plant-food" id="sub-frame">
         <div className="description">
         肥料-子畫面-道具說明 
         </div>

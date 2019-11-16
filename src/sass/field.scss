@@ -72,21 +72,64 @@
         background-size: cover;
         left: 16px;
         top: 18px;
+        &.qingjiang{
+          background-image: url('../media/images/seed2.png');
+        }
       }
     }
     &.seeding {
       background-image: url('../media/images/space.png');
       .plant {
         background-image: url('../media/images/seeding.png');
+        width: 15px;
+        height: 15px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        left: 26px;
+        top: 23px;
+      }
+    }
+    &.grow-small {
+      background-image: url('../media/images/space.png');
+      .plant {
         width: 35px;
+        height: 24px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        left: 20px;
+        top: 18px;
+        
+        &.white-radish{
+          background-image: url('../media/images/white-radish.small.png');
+        }
+        &.cauliflower{
+          background-image: url('../media/images/cauliflower.small.png');
+        }
+        &.qingjiang{
+          background-image: url('../media/images/qingjiang.small.png');
+        }
+      }
+    }
+    &.grow {
+      background-image: url('../media/images/space.png');
+      .plant {
+        width: 45px;
         height: 35px;
         background-repeat: no-repeat;
         background-size: cover;
         left: 16px;
-        top: 18px;
+        top: 14px; 
+        &.white-radish{
+          background-image: url('../media/images/white-radish.png');
+        }
+        &.cauliflower{
+          background-image: url('../media/images/cauliflower.png');
+        }
+        &.qingjiang{
+          background-image: url('../media/images/qingjiang.png');
+        }
       }
     }
-
 
     &.wet {
       background-image: url('../media/images/space-wet.png');

@@ -71,4 +71,19 @@
     }
   }
 
+  &.seeds {
+    .item {
+      border-color: #94793d;
+      box-shadow: -2px 2px 2px 1px #82682b inset;
+      &.white-radish{
+        background-image: url('../media/images/white-radish.png');
+      }
+      &.cauliflower{
+        background-image: url('../media/images/cauliflower.png');
+      }
+      &.qingjiang{
+        background-image: url('../media/images/qingjiang.png');
+      }
+    }
+  }
 }

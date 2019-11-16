@@ -31,6 +31,7 @@ class SubField extends React.Component {
   }
   clickField() {
     console.log('click field');
+    console.log('mouseState: ', this.props.mouseState)
     let newState = {
       field_id: this.state.field_id,
       wet: this.state.wet,
@@ -39,21 +40,25 @@ class SubField extends React.Component {
     if (this.state.field_id < 12) return;
     let weedingTools = ['grove', 'sickle'];
     let seeds = ['white-radish', 'cauliflower', 'qingjiang', 'persimmon'];
-    console.log('mouseState: ', this.props.mouseState)
-    if (this.props.mouseState.indexOf('water') > -1 && this.state.level > 1 ) {
-      newState.wet = 'wet'
+    if (this.state.level == 6 && weedingTools.indexOf(this.props.mouseState) > -1) {
+      newState.level = 1;
     }
+    if (this.props.mouseState.indexOf('water') > -1 && this.state.level > 1 ) {
+      newState.wet = 'wet';
+    }
+
     if (weedingTools.indexOf(this.props.mouseState) > -1) {
       newState.level = 2;
     } else if (this.state.level == 2 && seeds.indexOf(this.props.mouseState) > -1) {
-      newState.plant = this.props.mouseState
+      newState.plant = this.props.mouseState;
       newState.level = 3;
     } else if (
-              this.state.level == 2 && 
+              this.state.level > 2 && 
               newState.wet == 'wet' && 
-              this.props.mouseState == 'plant-food'
+              this.props.mouseState.indexOf('plant-food') > -1
               ){
-
+      newState.wet = '';
+      newState.level = this.state.level + 1;
     }
     // newState.level = this.state.level+1;
     this.setState(newState);
