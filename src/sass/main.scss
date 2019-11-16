@@ -9,6 +9,7 @@ h1 {
 }
 
 .main-frame {
+  user-select: none;
   overflow: hidden;
   width: 800px;
   height: 600px;
@@ -272,8 +273,8 @@ h1 {
       transform: rotateY(0);
     }
     &.c2 {
-      left: 427.75px;
-      top: 235.75px;
+      left: 450.75px;
+      top: 396.75px;
     }
   }
   .chicken-s {
