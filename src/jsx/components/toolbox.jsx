@@ -50,6 +50,11 @@ class ToolBoxBottom extends React.Component {
   render() {
     return (
       <div className="tools-box bottom">
+      
+        <div className="tool fence-1">
+        </div>
+        <div className="tool fence-2">
+        </div>
         <div className="tool harvest" onClick={()=>{this.props.clickHandler('Harvest')}}>
           
         </div>

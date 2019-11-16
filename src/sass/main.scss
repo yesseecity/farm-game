@@ -16,6 +16,7 @@ h1 {
   position: relative;
   margin: 0 auto;
   perspective: 800px;
+  background-color: #eae9ae;
   div {
     position: absolute;
   }
@@ -93,14 +94,6 @@ h1 {
       left: 2px;
       top: 10px;
     }
-  }
-
-  .fence {
-    border: 1px solid black;
-    left: 0px;
-    bottom: 10px;
-    height: 120px;
-    width: 680px;
   }
 
   .greenhouse {
@@ -202,7 +195,34 @@ h1 {
         background-repeat: no-repeat;
         background-size: 120px 120px;
       }
+      &.fence-1 {
+        border: 0px;
+        background-color: initial;
+        background-image: url("../media/images/fence.png");
+        background-size: 220px;
+        background-repeat: no-repeat;
+        background-position: 0px;
+        position: absolute;
+        width: 200px;
+        height: 150px;
+        left: 80px;
+        bottom: -30px;
+      }
+      &.fence-2 {
+        border: 0px;
+        background-color: initial;
+        background-image: url("../media/images/fence.png");
+        background-size: 220px;
+        background-repeat: no-repeat;
+        background-position: 0px;
+        width: 200px;
+        height: 150px;
+        position: absolute;
+        right: 120px;
+        bottom: -30px;
+      }
       &.harvest {
+        background-color: initial;
         border: 0px;
         height: 100px;
         width: 100px;
@@ -211,6 +231,7 @@ h1 {
         background-size: cover;
       }
       &.mail-box{ 
+        background-color: initial;
         background-image: url("../media/images/mail-box.png");
         background-repeat: no-repeat;
         position: absolute;
