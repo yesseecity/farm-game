@@ -1,32 +1,40 @@
 class SubFrameWeeding extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.items = [
       {
         name: "grove",
-        ct_name: "手套"
+        ct_name: "手套",
+        desc: "說明欄"
       },
       {
         name: "sickle",
-        ct_name: "鐮刀"
+        ct_name: "鐮刀",
+        desc: "說明欄"
+      },
+      {
+        name: "hoe",
+        ct_name: "鋤頭",
+        desc: "說明欄"
       },
       {
         name: "spray",
-        ct_name: "生化除草劑"
+        ct_name: "生化除草劑",
+        desc: "說明欄"
       }
-    ]
+    ];
   }
   componentDidMount() {
     $('.sub-frame').draggable();
   }
   select(itemName) {
-    console.log('select: ', itemName)
-    this.props.changeMouseState(itemName)
-    this.close()
+    console.log('select: ', itemName);
+    this.props.changeMouseState(itemName);
+    this.close();
   }
   close(e) {
-    if (e) e.stopPropagation()
-    this.props.clickHandler()
+    if (e) e.stopPropagation();
+    this.props.clickHandler();
   }
   renderItem() {
     var itemsDom = []
@@ -37,7 +45,6 @@ class SubFrameWeeding extends React.Component {
           >{item.ct_name}</div>)
       }
 
-      itemsDom.push(<div className="item">未開放</div>)
     return itemsDom
   }
   render() {

@@ -30,7 +30,7 @@
     }
 
     .plant {
-      box-shadow: -2px 1px 11px 0px black;
+        transform: rotate3d(1, 1, 0, 22deg);
     }
 
     &.wasteland {
@@ -41,6 +41,35 @@
     &.space {
       background-image: url('../media/images/space.png');
       background-color: #b08b44;
+    }
+    &.seed {
+      background-image: url('../media/images/space.png');
+      .plant {
+        background-image: url('../media/images/seed.png');
+        width: 35px;
+        height: 35px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        left: 16px;
+        top: 18px;
+      }
+    }
+    &.seeding {
+      background-image: url('../media/images/space.png');
+      .plant {
+        background-image: url('../media/images/seeding.png');
+        width: 35px;
+        height: 35px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        left: 16px;
+        top: 18px;
+      }
+    }
+
+
+    &.wet {
+      background-image: url('../media/images/space-wet.png');
     }
   }
 }

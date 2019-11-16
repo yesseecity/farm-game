@@ -212,6 +212,9 @@ class MainFrame extends React.Component {
             <div className="fence-6"></div>
           </div>
         </div>
+        <div className="greenhouse">
+          greenhouse
+        </div>
         <MailBox clickHandler={(type)=>{this.openSubFrame(type)}} />
         <ToolBoxRight clickHandler={(type)=>{this.openSubFrame(type)}} />
         <ToolBoxLeft clickHandler={(type)=>{this.openSubFrame(type)}} />

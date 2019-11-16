@@ -1,13 +1,51 @@
 class SubFrameSeed extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
+    this.items = [
+      {
+        name: "white-radish",
+        ct_name: "白蘿蔔",
+        desc: "說明欄"
+      },
+      {
+        name: "cauliflower",
+        ct_name: "花椰菜",
+        desc: "說明欄"
+      },
+      {
+        name: "qingjiang",
+        ct_name: "青江菜",
+        desc: "說明欄"
+      },
+      {
+        name: "persimmon",
+        ct_name: "柿子",
+        desc: "說明欄"
+      }
+    ];
   }
   componentDidMount() {
     $('.sub-frame').draggable();
   }
+  select(itemName) {
+    console.log('select: ', itemName);
+    this.props.changeMouseState(itemName);
+    this.close();
+  }
   close(e) {
-    e.stopPropagation()
-    this.props.clickHandler()
+    if (e) e.stopPropagation();
+    this.props.clickHandler();
+  }
+  renderItem() {
+    var itemsDom = []
+      for (let item of this.items) {
+        itemsDom.push(<div 
+          className={'item '+item.name}
+          onClick={()=>{this.select(item.name)}}
+          >{item.ct_name}</div>)
+      }
+
+    return itemsDom
   }
   render() {
     return (
@@ -16,10 +54,7 @@ class SubFrameSeed extends React.Component {
         種子-子畫面-道具說明 
         </div>
         <div className="items">
-          <div className="item">道具1</div>
-          <div className="item">道具2</div>
-          <div className="item">道具3</div>
-          <div className="item">道具4</div>
+          {this.renderItem()}
         </div>
         <i className="fas fa-times" onClick={()=>{this.props.clickHandler()}}></i>
       </div>

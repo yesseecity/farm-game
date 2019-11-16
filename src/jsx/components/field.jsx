@@ -3,7 +3,9 @@ class SubField extends React.Component {
     super(props)
     this.state = {
       level: 1,
-      field_id: this.props.fieldId
+      field_id: this.props.fieldId,
+      wet: '',
+      plant: ''
     }
     if (this.props.enableState == 'disable') {
       this.state.level = 0
@@ -13,25 +15,37 @@ class SubField extends React.Component {
     var fieldImgClassInfo = {
       'level0': 'wasteland',
       'level1': 'weed',
-      'level2': 'space'
+      'level2': 'space',
+      'level3': 'seed',
+      'level4': 'seeding',
+      'level5': 'grow1',
     };
     var subClass = ' ';
-    if (this.state.level < 3) {
+    if (this.state.level) {
       let levelName = 'level'+this.state.level.toString();
       subClass += fieldImgClassInfo[levelName];
     }
-    subClass += ' '+this.props.enableState;
+    subClass += ' '+this.state.wet;
     return subClass
   }
   clickField() {
     let newState = {
-      field_id: this.state.field_id
+      field_id: this.state.field_id,
+      wet: this.state.wet,
+      plant: this.state.plant
     };
     if (this.state.field_id < 12) return;
-    if (this.state.level == 2) return;
+    if (this.state.level == 3) return;
     let weedingTools = ['grove', 'sickle'];
+    let seeds = ['white-radish', 'cauliflower', 'qingjiang', 'persimmon'];
+    console.log('mouseState: ', this.props.mouseState)
+    if (this.props.mouseState.indexOf('water') > -1) {
+      newState.wet = 'wet'
+    }
     if (weedingTools.indexOf(this.props.mouseState) > -1) {
-      newState.level = 2
+      newState.level = 2;
+    } else if (this.state.level == 2 && seeds.indexOf(this.props.mouseState) > -1) {
+      newState.level = 3;
     }
     // newState.level = this.state.level+1;
     this.setState(newState);

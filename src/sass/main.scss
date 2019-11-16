@@ -259,6 +259,14 @@ h1 {
     }
   }
 
+  .greenhouse {
+    border: 1px solid;
+    width: 200px;
+    height: 200px;
+    right: 120px;
+    top: 140px;
+  }
+
   .mail-box {
     border: 1px solid black;
     right: 330px;
@@ -364,4 +372,14 @@ h1 {
 }
 .mouse-grove {
   cursor:url(../media/images/mouse-grove.png), pointer;
+}
+.mouse-white-radish,
+.mouse-cauliflower,
+.mouse-qingjiang,
+.mouse-persimmon,
+.mouse-seed {
+  cursor:url(../media/images/mouse-seed.png), pointer;
+}
+.mouse-seeding {
+  cursor:url(../media/images/mouse-seeding.png), pointer;
 }
