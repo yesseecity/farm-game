@@ -26,13 +26,12 @@ class SubField extends React.Component {
       let levelName = 'level'+this.state.level.toString();
       subClass += fieldImgClassInfo[levelName];
     }
-    console.log('subClass: ', subClass);
     subClass += ' '+this.state.wet;
     return subClass
   }
   clickField() {
-    console.log('click field');
-    console.log('mouseState: ', this.props.mouseState)
+    // console.log('click field');
+    // console.log('mouseState: ', this.props.mouseState)
     let newState = {
       field_id: this.state.field_id,
       wet: this.state.wet,
@@ -45,7 +44,9 @@ class SubField extends React.Component {
     if (this.state.level == 6 && weedingTools.indexOf(this.props.mouseState) > -1) {
       newState.level = 1;
     } else if (this.state.level == 6 && this.props.mouseState==''){
-      console.log('收成');
+      this.props.addHarvest(this.state.plant);
+      newState.level = 2;
+      newState.wet = '';
     } else if (this.state.level == 6) {
       return;
     }
@@ -76,7 +77,6 @@ class SubField extends React.Component {
         className={'sub-field '+this.fieldImgClass()}
         onClick={()=>{this.clickField()}}
       >
-      {this.state.level}
         <div className={'plant '+this.state.plant}></div>
       </div>
       
@@ -98,6 +98,7 @@ class Field extends React.Component {
         enableState={enableSate} 
         fieldId={i.toString()} 
         mouseState={this.props.mouseState}
+        addHarvest={(plantName)=>{this.props.addHarvest(plantName)}}
       />
       field_list.push(dom);
     }

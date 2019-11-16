@@ -3,7 +3,6 @@
   border-radius: 5px;
   width: 400px;
   height: 300px;
-  background:  white;
   left: 120px;
   top: 90px;
   padding: 5px;
@@ -89,9 +88,6 @@
         background-repeat: no-repeat;
         background-size: 90px 90px;
       }
-      &.disable {
-        cursor: not-allowed;
-      }
     }
   }
   &.seeds {
@@ -165,7 +161,7 @@
       }
     }
   }
-  &.mail-box{
+  &.mail-box {
     .header {
       width: 288px;
       height: auto;
@@ -188,5 +184,62 @@
       }
     }
   }
-
+  &.harvest {
+    .submit {
+      padding: 5px 3px 5px 10px;
+      border-radius: 5px;
+      background-color: #8c5829;
+      position: absolute;
+      width: 40px;
+      height: auto;
+      right: 12px;
+      bottom: 12px;
+      cursor: pointer;
+    }
+    .items {
+      position: absolute;
+      width: 395px;
+      top: 30px;
+      height: 220px;
+    }
+    .item {
+      height: 110px;
+      width: 100px;
+      margin: 5px;
+      .img {
+        width: 75px;
+        height: 75px;
+        left: 12px;
+        &.qingjiang {
+          background-image: url('../media/images/qingjiang.png');
+          background-repeat: no-repeat;
+          background-size: 75px 75px;
+        }
+        &.cauliflower {
+          background-image: url('../media/images/cauliflower.png');
+          background-repeat: no-repeat;
+          background-size: 75px 75px;
+        }
+        &.white-radish {
+          background-image: url('../media/images/white-radish.png');
+          background-repeat: no-repeat;
+          background-size: 75px 75px;
+        }
+      }
+      .price {
+        width: 50px;
+        height: 30px;
+        bottom: 0px;
+        left: 5px;
+      }
+      .count {
+        display: block;
+        position: absolute;
+        width: 30px;
+        bottom: 0px;
+        right: 0px;  
+      }
+      
+    }
+  }
 }

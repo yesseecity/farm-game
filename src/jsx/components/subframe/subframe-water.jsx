@@ -29,6 +29,9 @@ class SubFrameWater extends React.Component {
   }
   componentDidMount() {
     $('.sub-frame').draggable();
+    $('.disable').tooltip({
+      content: "這個功能要等正式上現才會開放喔!"
+    });
   }
   select(itemName) {
     console.log('select: ', itemName);

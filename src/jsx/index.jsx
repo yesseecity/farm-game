@@ -7,7 +7,7 @@ class AccountInfo extends React.Component{
           <div className="full-exp">
             <div className="real-exp"></div>
           </div>
-          <span className="text">xp</span>
+          <span className="text">exp</span>
         </div>
         <div className="money">$ 1,117</div>
       </div>
@@ -18,8 +18,7 @@ class AccountInfo extends React.Component{
 class Shop extends React.Component{
   render() {
     return (
-      <div className="shop">
-        <i className="fas fa-store"></i>
+      <div className="shop disable">
       </div>
     );
   }
@@ -28,8 +27,8 @@ class Weather extends React.Component{
   render() {
     return (
       <div className="weather">
-        <i className="fas fa-cloud-moon"></i>
-        <span className="temperature-text">25°C</span>
+        <div className="sun"></div>
+        <span className="temperature-text">31°C</span>
       </div>
     );
   }
@@ -58,10 +57,14 @@ class MainFrame extends React.Component {
         MailBox: false,
       }
     };
+    this.harvest= {
+      'harvest': {
+      }
+    };
     this.mouseState = {
       mouse: ''
-    }
-    this.state = Object.assign({}, defaultFrame, this.mouseState)
+    };
+    this.state = Object.assign({}, defaultFrame, this.harvest, this.mouseState)
   }
   openSubFrame(type) {
     var defaultFrame = {
@@ -77,7 +80,7 @@ class MainFrame extends React.Component {
     }
 
     defaultFrame.frame[type]=true;
-    var newState = Object.assign({}, defaultFrame, this.mouseState)
+    var newState = Object.assign({}, defaultFrame, this.harvest, this.mouseState)
     console.log('newState: ', newState)
     this.setState(newState);
   }
@@ -93,7 +96,7 @@ class MainFrame extends React.Component {
         MailBox: false,
       }
     }
-    var newState = Object.assign({}, defaultFrame, this.mouseState)
+    var newState = Object.assign({}, defaultFrame, this.harvest, this.mouseState)
     this.setState(newState);
   }
   rendSubFrame() {
@@ -143,6 +146,7 @@ class MainFrame extends React.Component {
       let subframeHarvest = <SubFrameHarvest 
         clickHandler={()=>{this.closeSubFrame()}}
         changeMouseState={(state)=>this.changeMouseState(state)}
+        harvest={this.harvest}
       />      
       subframe_list.push(subframeHarvest);
     }
@@ -166,6 +170,26 @@ class MainFrame extends React.Component {
       // mouse right button
       this.changeMouseState('')
     }
+  }
+  addHarvest(name) {
+    var defaultFrame = {
+      frame: {
+        Seed: false,
+        Water: false,
+        PestControl: false,
+        PlantFood: false,
+        Weeding: false,
+        Harvest: false,
+        MailBox: false,
+      }
+    }
+    if (name in this.harvest['harvest']) {
+      this.harvest['harvest'][name] += 1;
+    } else {
+      this.harvest['harvest'][name] = 1;
+    }
+    var newState = Object.assign({}, defaultFrame, this.harvest, this.mouseState)
+    this.setState(newState);
   }
   changeMouseState(mouseState) {
     console.log('main-frame mouseState: ', mouseState)
@@ -201,7 +225,7 @@ class MainFrame extends React.Component {
         <AccountInfo />
         <Shop />
         <Weather />
-        <Field mouseState={this.state.mouse}/>
+        <Field mouseState={this.state.mouse} addHarvest={(plantName)=>{this.addHarvest(plantName)}}/>
         <div className="fence" hidden>
           <div className="fence-divs">
             <div className="fence-1"></div>
@@ -212,10 +236,20 @@ class MainFrame extends React.Component {
             <div className="fence-6"></div>
           </div>
         </div>
-        <div className="greenhouse"></div>
+        <div className="greenhouse disable" alert="還沒開放"></div>
         <MailBox />
         <ToolBoxBottom clickHandler={(type)=>{this.openSubFrame(type)}} />
         <ToolBoxRight clickHandler={(type)=>{this.openSubFrame(type)}} />
+        <div class="chicken c1"></div>
+        <div class="chicken c2"></div>
+        <div class="chicken-s c4"></div>
+        <div class="chicken-s c5"></div>
+        <div class="chicken-s c6"></div>
+        <div class="chicken-s c7"></div>
+        <div class="tree tree1 t1" ></div>
+        <div class="tree tree2 t2" ></div>
+        <div class="tree tree1 t3" ></div>
+        <div class="tree tree2 t4" ></div>
         {this.rendSubFrame()}
       </div>
     );

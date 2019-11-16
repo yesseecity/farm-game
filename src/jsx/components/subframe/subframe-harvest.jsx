@@ -9,17 +9,35 @@ class SubFrameHarvest extends React.Component {
     e.stopPropagation()
     this.props.clickHandler()
   }
+  renderItem() {
+    var itemsDom = []
+
+    let itemsName = Object.keys(this.props.harvest['harvest']);
+    for (let itemName of itemsName){
+      let amount = this.props.harvest['harvest'][itemName]
+      // console.log('itemName: ', itemName)
+      // console.log('amount: ', amount)
+      let dom = <div className={'item '+itemName}>
+          <div className={'img '+itemName}></div>
+          <div className="price">$ 20</div>
+          <input className="count" type="number" Max={amount} Min="0" />
+        </div>;
+      itemsDom.push(dom);
+    }
+    return itemsDom;
+  }
   render() {
     return (
-      <div className="sub-frame" id="sub-frame">
-        <div className="description">
-        收成-子畫面-道具說明 
+      <div className="sub-frame harvest" id="sub-frame">
+        <div className="header">
+          收成
         </div>
+
         <div className="items">
-          <div className="item">道具1</div>
-          <div className="item">道具2</div>
-          <div className="item">道具3</div>
-          <div className="item">道具4</div>
+          {this.renderItem()}
+        </div>
+        <div className="submit">
+          訂購
         </div>
         <i className="fas fa-times" onClick={()=>{this.props.clickHandler()}}></i>
       </div>
