@@ -4,17 +4,17 @@ class SubFramePlantFood extends React.Component {
     this.items = [
       {
         name: "plant-food",
-        ct_name: "肥料",
+        ct_name: "有機肥料",
         desc: "說明欄"
       },
       {
-        name: "plant-food",
-        ct_name: "道具2",
+        name: "plant-food2",
+        ct_name: "有機牛糞",
         desc: "說明欄"
       },
       {
-        name: "plant-food",
-        ct_name: "道具3",
+        name: "plant-food3",
+        ct_name: "有機雞糞",
         desc: "說明欄"
       }
     ];

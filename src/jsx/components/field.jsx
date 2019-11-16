@@ -42,6 +42,10 @@ class SubField extends React.Component {
     let seeds = ['white-radish', 'cauliflower', 'qingjiang', 'persimmon'];
     if (this.state.level == 6 && weedingTools.indexOf(this.props.mouseState) > -1) {
       newState.level = 1;
+    } else if (this.state.level == 6 && this.props.mouseState==''){
+      console.log('收成');
+    } else if (this.state.level == 6) {
+      return;
     }
     if (this.props.mouseState.indexOf('water') > -1 && this.state.level > 1 ) {
       newState.wet = 'wet';
