@@ -34,29 +34,28 @@ class ToolBoxRight extends React.Component {
           <i className={'fas fa-angle-left '+this.state.arrowIconRotate}></i>
         </div>
         <div className="tool seed" onClick={()=>{this.props.clickHandler('Seed')}}>
-          播種
         </div>
         <div className="tool water" onClick={()=>{this.props.clickHandler('Water')}}>
-          <i className="fas fa-tint"></i>
         </div>
         <div className="tool pest-control" onClick={()=>{this.props.clickHandler('PestControl')}}>
-          <i className="fas fa-spider"></i>
         </div>
         <div className="tool plant-food" onClick={()=>{this.props.clickHandler('PlantFood')}}>
-          施肥
         </div>
       </div>
     );
   }
 }
 
-class ToolBoxLeft extends React.Component {
+class ToolBoxBottom extends React.Component {
   render() {
     return (
-      <div className="tools-box left">
+      <div className="tools-box bottom">
         <div className="tool harvest" onClick={()=>{this.props.clickHandler('Harvest')}}>
           
         </div>
+        <div className="tool mail-box" onClick={()=>{this.props.clickHandler('MailBox')}}>
+        </div>
+        
       </div>
     );
   }

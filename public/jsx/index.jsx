@@ -39,8 +39,9 @@ class SubField extends React.Component {
       plant: this.state.plant
     };
     if (this.state.field_id < 12) return;
-    let weedingTools = ['grove', 'sickle'];
+    let weedingTools = ['grove', 'sickle', 'hoe', 'spray'];
     let seeds = ['white-radish', 'cauliflower', 'qingjiang', 'persimmon'];
+    let water = ['watering-can', 'pipe'];
     if (this.state.level == 6 && weedingTools.indexOf(this.props.mouseState) > -1) {
       newState.level = 1;
     } else if (this.state.level == 6 && this.props.mouseState==''){
@@ -48,7 +49,7 @@ class SubField extends React.Component {
     } else if (this.state.level == 6) {
       return;
     }
-    if (this.props.mouseState.indexOf('water') > -1 && this.state.level > 1 ) {
+    if (water.indexOf(this.props.mouseState) > -1 && this.state.level > 1 ) {
       newState.wet = 'wet';
     }
 
@@ -148,29 +149,28 @@ class ToolBoxRight extends React.Component {
           <i className={'fas fa-angle-left '+this.state.arrowIconRotate}></i>
         </div>
         <div className="tool seed" onClick={()=>{this.props.clickHandler('Seed')}}>
-          播種
         </div>
         <div className="tool water" onClick={()=>{this.props.clickHandler('Water')}}>
-          <i className="fas fa-tint"></i>
         </div>
         <div className="tool pest-control" onClick={()=>{this.props.clickHandler('PestControl')}}>
-          <i className="fas fa-spider"></i>
         </div>
         <div className="tool plant-food" onClick={()=>{this.props.clickHandler('PlantFood')}}>
-          施肥
         </div>
       </div>
     );
   }
 }
 
-class ToolBoxLeft extends React.Component {
+class ToolBoxBottom extends React.Component {
   render() {
     return (
-      <div className="tools-box left">
+      <div className="tools-box bottom">
         <div className="tool harvest" onClick={()=>{this.props.clickHandler('Harvest')}}>
           
         </div>
+        <div className="tool mail-box" onClick={()=>{this.props.clickHandler('MailBox')}}>
+        </div>
+        
       </div>
     );
   }
@@ -428,25 +428,25 @@ class SubFrameWater extends React.Component {
     super(props);
     this.items = [
       {
-        name: "water",
+        name: "watering-can",
         ct_name: "澆水器",
         desc: "說明欄"
       },
       {
-        name: "water",
+        name: "pipe",
         ct_name: "水管",
         desc: "說明欄"
       },
-      {
-        name: "water",
-        ct_name: "微型噴頭",
-        desc: "說明欄"
-      },
-      {
-        name: "water",
-        ct_name: "滴灌管子",
-        desc: "說明欄"
-      }
+      // {
+      //   name: "water",
+      //   ct_name: "微型噴頭",
+      //   desc: "說明欄"
+      // },
+      // {
+      //   name: "water",
+      //   ct_name: "滴灌管子",
+      //   desc: "說明欄"
+      // }
     ];
   }
   componentDidMount() {
@@ -469,12 +469,14 @@ class SubFrameWater extends React.Component {
           onClick={()=>{this.select(item.name)}}
           >{item.ct_name}</div>)
       }
+      itemsDom.push(<div className='item disable'>未開放</div>)
+      itemsDom.push(<div className='item disable'>未開放</div>)
 
     return itemsDom
   }
   render() {
     return (
-      <div className="sub-frame" id="sub-frame">
+      <div className="sub-frame water" id="sub-frame">
         <div className="description">
         澆水-子畫面-道具說明 
         </div>
@@ -564,7 +566,7 @@ class AccountInfo extends React.Component{
           </div>
           <span className="text">xp</span>
         </div>
-        <div className="money">$ 100,010</div>
+        <div className="money">$ 1,117</div>
       </div>
     );
   }
@@ -632,8 +634,10 @@ class MainFrame extends React.Component {
         MailBox: false,
       }
     }
+    
     defaultFrame.frame[type]=true;
     var newState = Object.assign({}, defaultFrame, this.mouseState)
+    console.log('newState: ', newState)
     this.setState(newState);
   }
   closeSubFrame() {
@@ -707,7 +711,7 @@ class MainFrame extends React.Component {
         clickHandler={()=>{this.closeSubFrame()}}
         changeMouseState={(state)=>this.changeMouseState(state)}
       />      
-      subframe_list.push(subframeHarvest);
+      subframe_list.push(subframeMailBox);
     }
 
     return subframe_list
@@ -767,12 +771,10 @@ class MainFrame extends React.Component {
             <div className="fence-6"></div>
           </div>
         </div>
-        <div className="greenhouse">
-          greenhouse
-        </div>
-        <MailBox clickHandler={(type)=>{this.openSubFrame(type)}} />
+        <div className="greenhouse"></div>
+        <MailBox />
+        <ToolBoxBottom clickHandler={(type)=>{this.openSubFrame(type)}} />
         <ToolBoxRight clickHandler={(type)=>{this.openSubFrame(type)}} />
-        <ToolBoxLeft clickHandler={(type)=>{this.openSubFrame(type)}} />
         {this.rendSubFrame()}
       </div>
     );

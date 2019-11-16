@@ -9,7 +9,7 @@ class AccountInfo extends React.Component{
           </div>
           <span className="text">xp</span>
         </div>
-        <div className="money">$ 100,010</div>
+        <div className="money">$ 1,117</div>
       </div>
     );
   }
@@ -77,8 +77,10 @@ class MainFrame extends React.Component {
         MailBox: false,
       }
     }
+    
     defaultFrame.frame[type]=true;
     var newState = Object.assign({}, defaultFrame, this.mouseState)
+    console.log('newState: ', newState)
     this.setState(newState);
   }
   closeSubFrame() {
@@ -152,7 +154,7 @@ class MainFrame extends React.Component {
         clickHandler={()=>{this.closeSubFrame()}}
         changeMouseState={(state)=>this.changeMouseState(state)}
       />      
-      subframe_list.push(subframeHarvest);
+      subframe_list.push(subframeMailBox);
     }
 
     return subframe_list
@@ -212,12 +214,10 @@ class MainFrame extends React.Component {
             <div className="fence-6"></div>
           </div>
         </div>
-        <div className="greenhouse">
-          greenhouse
-        </div>
-        <MailBox clickHandler={(type)=>{this.openSubFrame(type)}} />
+        <div className="greenhouse"></div>
+        <MailBox />
+        <ToolBoxBottom clickHandler={(type)=>{this.openSubFrame(type)}} />
         <ToolBoxRight clickHandler={(type)=>{this.openSubFrame(type)}} />
-        <ToolBoxLeft clickHandler={(type)=>{this.openSubFrame(type)}} />
         {this.rendSubFrame()}
       </div>
     );

@@ -101,182 +101,18 @@ h1 {
     bottom: 10px;
     height: 120px;
     width: 680px;
-    .fence-divs {
-      $fence-color: #bf6730;
-      top: 100px;
-      left: -60px;
-      div {
-        background-color: $fence-color;
-        position:relative;
-      }
-      .fence-1{
-        width:20px;
-        height:80px;
-        background-color: $fence-color;
-        top:-80px;
-        left:280px;
-        z-index:30;
-        &::after{
-          content:'';
-          position:absolute;
-          width:0;
-          height:0;
-          border-right:10px solid transparent;
-          border-bottom:15px solid  $fence-color;
-          border-left:10px solid transparent;
-          top:-15px;
-        }
-        &::before{
-          content:'';
-          position:absolute;
-          width:100px;
-          height:20px;
-          background-color: $fence-color;
-          left:-85px;
-        }
-      }
-      .fence-2{
-        position:relative;
-        width:20px;
-        height:80px;
-        background-color: $fence-color;
-        top:-160px;
-        left:240px;
-        z-index:30;
-        &::after{
-          content:'';
-          position:absolute;
-          width:0;
-          height:0;
-          border-right:10px solid transparent;
-          border-bottom:15px solid  $fence-color;
-          border-left:10px solid transparent;
-          top:-15px;
-        }
-         &::before{
-          content:'';
-          position:absolute;
-          width:100px;
-          height:20px;
-          background-color: $fence-color;
-          left:-45px;
-           top:40px;
-        }
-      }
-      .fence-3{
-        position:relative;
-        width:20px;
-        height:80px;
-        background-color: $fence-color;
-        top:-240px;
-        left:200px;
-        z-index:30;
-        &::after{
-          content:'';
-          position:absolute;
-          width:0;
-          height:0;
-          border-right:10px solid transparent;
-          border-bottom:15px solid  $fence-color;
-          border-left:10px solid transparent;
-          top:-15px;
-        }
-      }
-
-      .fence-4{
-        position:relative;
-        width:20px;
-        height:80px;
-        background-color: $fence-color;
-        top:-320px;
-        left:595px;
-        z-index:30;
-        &::after{
-          content:'';
-          position:absolute;
-          width:0;
-          height:0;
-          border-right:10px solid transparent;
-          border-bottom:15px solid  $fence-color;
-          border-left:10px solid transparent;
-          top:-15px;
-        }
-        &::before{
-          content:'';
-          position:absolute;
-          width:105px;
-          height:20px;
-          background-color: $fence-color;
-        }
-      }
-      .fence-5{
-        position:relative;
-        width:20px;
-        height:80px;
-        background-color: $fence-color;
-        top:-400px;
-        left:635px;
-        z-index:30;
-        &::after{
-          content:'';
-          position:absolute;
-          width:0;
-          height:0;
-          border-right:10px solid transparent;
-          border-bottom:15px solid  $fence-color;
-          border-left:10px solid transparent;
-          top:-15px;
-        }
-        &::before{
-          content:'';
-          position:absolute;
-          width:105px;
-          height:20px;
-          background-color: $fence-color;
-          left:-40px;
-          top:40px;
-        }
-      }
-      .fence-6{
-         position:relative;
-        width:20px;
-        height:80px;
-        background-color: $fence-color;
-        top:-480px;
-        left:675px;
-        z-index:30;
-        &::after{
-          content:'';
-          position:absolute;
-          width:0;
-          height:0;
-          border-right:10px solid transparent;
-          border-bottom:15px solid  $fence-color;
-          border-left:10px solid transparent;
-          top:-15px;
-        }
-      }
-    }
   }
 
   .greenhouse {
-    border: 1px solid;
-    width: 200px;
+    width: 240px;
     height: 200px;
-    right: 120px;
+    right: 90px;
     top: 140px;
+    background-image: url('../media/images/greenhouse.png');
+    cursor: not-allowed;
   }
 
-  .mail-box {
-    border: 1px solid black;
-    right: 330px;
-    bottom: 0px;
-    height: 140px;
-    width: 50px;
-    &:hover {
-      cursor: pointer;
-    }
-  }
+
   .tools-box {
     // border: 1px solid black;
     overflow: hidden;
@@ -314,14 +150,21 @@ h1 {
       }
       .tool{
          right: -20px;
+         &.mail-box{
+            background-image: url('../media/images/mail-box.png');
+            background-repeat: no-repeat;
+            background-size: 120px 120px;
+         }
       }
     }
 
-    &.left {
+    &.bottom {
       height: 100px;
+      width: 100%;
       left: 10px;
       bottom: 10px;
       position: absolute;
+      overflow: initial;
     }
     .tool {
       background-color: white;
@@ -330,10 +173,7 @@ h1 {
       border-bottom: 0px;
       width: 120px;
       height: 120px;
-
-      &:hover {
-        cursor: pointer;
-      }
+      cursor: pointer;
 
       &.seed {
         background-image: url('../media/images/seed.png');
@@ -341,20 +181,16 @@ h1 {
         background-size: 120px 120px;
       }
       &.water {
-        .fa-tint {
-          font-size: 50px;
-          position: absolute;
-          left: 50px;
-          top: 30px;
-        }
+        background-image: url('../media/images/water.png');
+        background-repeat: no-repeat;
+        background-size: 100px 100px;
+        background-position: 8px;
       }
       &.pest-control {
-        .fa-spider {
-          font-size: 50px;
-          position: absolute;
-          left: 50px;
-          top: 30px;
-        }
+        background-image: url('../media/images/pest-control.png');
+        background-repeat: no-repeat;
+        background-size: 100px 100px;
+        background-position: 8px;
       }
       &.plant-food {
         background-image: url('../media/images/plant-food.png');
@@ -374,15 +210,30 @@ h1 {
         background-repeat: no-repeat;
         background-size: cover;
       }
+      &.mail-box{ 
+        background-image: url("../media/images/mail-box.png");
+        background-repeat: no-repeat;
+        position: absolute;
+        bottom: 0px;
+        right: 300px;
+        width: 61px;
+        height: 140px;
+        border: 0px;
+      }
     }
   }
 }
-
+.mouse-hoe {
+  cursor:url(../media/images/mouse-hoe.png), pointer;
+}
 .mouse-sickle {
   cursor:url(../media/images/mouse-sickle.png), pointer;
 }
 .mouse-grove {
   cursor:url(../media/images/mouse-grove.png), pointer;
+}
+.mouse-spray {
+  cursor:url(../media/images/mouse-spray.png), pointer;
 }
 .mouse-white-radish,
 .mouse-cauliflower,
@@ -401,4 +252,10 @@ h1 {
 }
 .mouse-plant-food3{
   cursor:url(../media/images/mouse-plant-food3.png), pointer;
+}
+.mouse-watering-can {
+  cursor:url(../media/images/mouse-watering-can.png), pointer;
+}
+.mouse-pipe {
+  cursor:url(../media/images/mouse-pipe.png), pointer;
 }

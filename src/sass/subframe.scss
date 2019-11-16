@@ -57,10 +57,39 @@
         background-repeat: no-repeat;
         background-size: 90px 90px;
       }
+      &.hoe {
+        background-image: url('../media/images/hoe.png');
+        background-repeat: no-repeat;
+        background-size: 90px 90px;
+      }
       &.spray {
         background-image: url('../media/images/spray.png');
         background-repeat: no-repeat;
         background-size: 90px 90px;
+      }
+    }
+  }
+  &.water {
+    background: #a2843b;
+
+    .item {
+      border-color: #94793d;
+      box-shadow: -2px 2px 2px 1px #82682b inset;
+      background-repeat: no-repeat;
+      background-size: 90px;
+      cursor: pointer;
+      &.watering-can {
+        background-image: url('../media/images/watering-can.png');
+        background-repeat: no-repeat;
+        background-size: 90px 90px;
+      }
+      &.pipe {
+        background-image: url('../media/images/pipe.png');
+        background-repeat: no-repeat;
+        background-size: 90px 90px;
+      }
+      &.disable {
+        cursor: not-allowed;
       }
     }
   }
