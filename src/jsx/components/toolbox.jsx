@@ -55,7 +55,7 @@ class ToolBoxLeft extends React.Component {
     return (
       <div className="tools-box left">
         <div className="tool harvest" onClick={()=>{this.props.clickHandler('Harvest')}}>
-          收成
+          
         </div>
       </div>
     );

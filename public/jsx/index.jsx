@@ -18,7 +18,8 @@ class SubField extends React.Component {
       'level2': 'space',
       'level3': 'seed',
       'level4': 'seeding',
-      'level5': 'grow1',
+      'level5': 'grow-small',
+      'level6': 'grow',
     };
     var subClass = ' ';
     if (this.state.level) {
@@ -29,28 +30,34 @@ class SubField extends React.Component {
     return subClass
   }
   clickField() {
+    console.log('click field');
     let newState = {
       field_id: this.state.field_id,
       wet: this.state.wet,
       plant: this.state.plant
     };
     if (this.state.field_id < 12) return;
-    if (this.state.level == 3) return;
     let weedingTools = ['grove', 'sickle'];
     let seeds = ['white-radish', 'cauliflower', 'qingjiang', 'persimmon'];
     console.log('mouseState: ', this.props.mouseState)
-    if (this.props.mouseState.indexOf('water') > -1) {
+    if (this.props.mouseState.indexOf('water') > -1 && this.state.level > 1 ) {
       newState.wet = 'wet'
     }
     if (weedingTools.indexOf(this.props.mouseState) > -1) {
       newState.level = 2;
     } else if (this.state.level == 2 && seeds.indexOf(this.props.mouseState) > -1) {
+      newState.plant = this.props.mouseState
       newState.level = 3;
+    } else if (
+              this.state.level == 2 && 
+              newState.wet == 'wet' && 
+              this.props.mouseState == 'plant-food'
+              ){
+
     }
     // newState.level = this.state.level+1;
     this.setState(newState);
 
-    console.log('click field');
   }
   render() {
     return (
@@ -59,7 +66,7 @@ class SubField extends React.Component {
         onClick={()=>{this.clickField()}}
       >
       {this.state.level}
-        <div className="plant"></div>
+        <div className={'plant '+this.state.plant}></div>
       </div>
       
     );
@@ -152,7 +159,7 @@ class ToolBoxLeft extends React.Component {
     return (
       <div className="tools-box left">
         <div className="tool harvest" onClick={()=>{this.props.clickHandler('Harvest')}}>
-          收成
+          
         </div>
       </div>
     );
@@ -290,22 +297,22 @@ class SubFramePlantFood extends React.Component {
     super(props);
     this.items = [
       {
-        name: "grove",
-        ct_name: "道具1",
+        name: "plant-food",
+        ct_name: "肥料",
         desc: "說明欄"
       },
       {
-        name: "pipe",
+        name: "plant-food",
         ct_name: "道具2",
         desc: "說明欄"
       },
       {
-        name: "sickle",
+        name: "plant-food",
         ct_name: "道具3",
         desc: "說明欄"
       },
       {
-        name: "hoe",
+        name: "plant-food",
         ct_name: "道具4",
         desc: "說明欄"
       }

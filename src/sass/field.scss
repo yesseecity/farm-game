@@ -25,12 +25,32 @@
         background-color: gray;
       }
     }
-    &:hover {
-      background-color: #06ff00;
-    }
-
     .plant {
         transform: rotate3d(1, 1, 0, 22deg);
+        &.white-radish{
+          background-image: url('../media/images/white-radish.png');
+        }
+        &.white-radish-small{
+          background-image: url('../media/images/white-radish.small.png');
+        }
+        &.cauliflower{
+          background-image: url('../media/images/cauliflower.png');
+        }        
+        &.cauliflower-small{
+          background-image: url('../media/images/cauliflower.small.png');
+        }
+        &.qingjiang{
+          background-image: url('../media/images/qingjiang.png');
+        }
+        &.qingjiang-small{
+          background-image: url('../media/images/qingjiang.small.png');
+        }
+        &.persimmon{
+          background-image: url('../media/images/persimmon.png');
+        }
+        &.persimmon-small{
+          background-image: url('../media/images/persimmon.small.png');
+        }
     }
 
     &.wasteland {

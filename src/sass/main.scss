@@ -359,9 +359,12 @@ h1 {
         background-size: 120px 120px;
       }
       &.harvest {
-        border-bottom: 1px;
-        height: 100%;
-        width:118px;
+        border: 0px;
+        height: 100px;
+        width: 100px;
+        background-image: url('../media/images/harvest.png');
+        background-repeat: no-repeat;
+        background-size: cover;
       }
     }
   }
