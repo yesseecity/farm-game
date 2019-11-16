@@ -1,16 +1,19 @@
 class SubFrameWater extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      desc: ''
+    };
     this.items = [
       {
         name: "watering-can",
         ct_name: "澆水器",
-        desc: "說明欄"
+        desc: "經典的澆水器，種植物一定要買一個。"
       },
       {
         name: "pipe",
         ct_name: "水管",
-        desc: "說明欄"
+        desc: "接上水龍頭就能帶來源源不絕的水，但要小心水費變很多。"
       },
       // {
       //   name: "water",
@@ -36,12 +39,16 @@ class SubFrameWater extends React.Component {
     if (e) e.stopPropagation();
     this.props.clickHandler();
   }
+  renderDesc(desc) {
+    this.setState({'desc': desc})
+  }
   renderItem() {
     var itemsDom = []
       for (let item of this.items) {
         itemsDom.push(<div 
           className={'item '+item.name}
           onClick={()=>{this.select(item.name)}}
+          onMouseOver={()=>{this.renderDesc(item.desc)}}
           >{item.ct_name}</div>)
       }
       itemsDom.push(<div className='item disable'>未開放</div>)
@@ -53,7 +60,7 @@ class SubFrameWater extends React.Component {
     return (
       <div className="sub-frame water" id="sub-frame">
         <div className="description">
-        澆水-子畫面-道具說明 
+          {this.state.desc}
         </div>
         <div className="items">
           {this.renderItem()}

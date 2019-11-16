@@ -29,8 +29,7 @@ class Weather extends React.Component{
     return (
       <div className="weather">
         <i className="fas fa-cloud-moon"></i>
-        <span className="temperature-text">25</span>
-        <i className="fas fa-temperature-low"></i>
+        <span className="temperature-text">25°C</span>
       </div>
     );
   }

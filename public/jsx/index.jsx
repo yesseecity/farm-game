@@ -217,19 +217,19 @@ class SubFrameMailBox extends React.Component {
     this.news = [
       {
         title: '(國際) 2019/11/07 蝗蟲，正在入侵印度 | 征戰斯芬克斯',
-        url: 'https://www.google.com'
+        url: 'https://read01.com/oABdNo3.html#.Xc_zRzMzbIU'
       },
       {
         title: '(國內) 2019/11/16 輔導落花生契作契銷農民收益有保障 ',
-        url: 'https://www.google.com'
+        url: 'https://www.afa.gov.tw/cht/index.php?code=list&flag=detail&ids=630&article_id=5529'
       },
       {
         title: '(國內) 2019/11/12 大宗蔬菜播種量及供苗預警資訊 ',
-        url: 'https://www.google.com'
+        url: 'https://www.afa.gov.tw/cht/index.php?code=list&flag=detail&ids=307&article_id=45846'
       },
       {
         title: '(國內) 2019/11/15 2019臺灣國際茶業博覽會，讓消費者安心品好茶 ',
-        url: 'https://www.google.com'
+        url: 'https://www.afa.gov.tw/cht/index.php?code=list&flag=detail&ids=307&article_id=45857'
       }
 
     ]
@@ -269,26 +269,28 @@ class SubFrameMailBox extends React.Component {
 class SubFramePestControl extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      desc: ''
+    };
     this.items = [
       {
         name: "item1",
         ct_name: "生物性農藥",
-        desc: "說明欄"
-      },
+        desc: "天然物質如動物、植物、微生物及其所衍生之產品，對人畜安全無毒害，不會危及鳥類，其他生物"      },
       {
         name: "item2",
         ct_name: "茶皂素",
-        desc: "說明欄"
+        desc: "天然植物提煉之殺蟲劑。優點：易降解，無殘留"
       },
       {
         name: "item3",
         ct_name: "除蟲菊精",
-        desc: "說明欄"
+        desc: "天然化合物殺蟲劑。優點：高效、低毒、易降解"
       },
       {
         name: "item4",
         ct_name: "礦物油",
-        desc: "說明欄"
+        desc: "天然殺蟲劑、殺菌劑，使昆蟲物理性窒息。優點：高效、經濟"
       }
     ];
   }
@@ -304,11 +306,15 @@ class SubFramePestControl extends React.Component {
     if (e) e.stopPropagation();
     this.props.clickHandler();
   }
+  renderDesc(desc) {
+    this.setState({'desc': desc});
+  }
   renderItem() {
     var itemsDom = []
       for (let item of this.items) {
         itemsDom.push(<div 
           className={'item '+item.name}
+          onMouseOver={()=>{this.renderDesc(item.desc)}}
           >{item.ct_name}</div>)
       }
 
@@ -318,7 +324,7 @@ class SubFramePestControl extends React.Component {
     return (
       <div className="sub-frame pest-control" id="sub-frame">
         <div className="description">
-        蟲害防治-子畫面-道具說明 
+          {this.state.desc}
         </div>
         <div className="items">
           {this.renderItem()}
@@ -333,21 +339,24 @@ class SubFramePestControl extends React.Component {
 class SubFramePlantFood extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      desc: ''
+    };
     this.items = [
       {
         name: "plant-food",
         ct_name: "有機肥料",
-        desc: "說明欄"
+        desc: "市售的有機肥料，植物的最愛。"
       },
       {
         name: "plant-food2",
         ct_name: "有機牛糞",
-        desc: "說明欄"
+        desc: "農家自己做的有機牛糞，含氮量似乎有點高。"
       },
       {
         name: "plant-food3",
         ct_name: "有機雞糞",
-        desc: "說明欄"
+        desc: "農家自己弄的有機雞糞，含氮量似乎有點高。"
       }
     ];
   }
@@ -363,12 +372,16 @@ class SubFramePlantFood extends React.Component {
     if (e) e.stopPropagation();
     this.props.clickHandler();
   }
+  renderDesc(desc) {
+    this.setState({'desc': desc})
+  }
   renderItem() {
     var itemsDom = []
       for (let item of this.items) {
         itemsDom.push(<div 
           className={'item '+item.name}
           onClick={()=>{this.select(item.name)}}
+          onMouseOver={()=>{this.renderDesc(item.desc)}}
           >{item.ct_name}</div>)
       }
       itemsDom.push(<div className="item disable"></div>)
@@ -379,7 +392,7 @@ class SubFramePlantFood extends React.Component {
     return (
       <div className="sub-frame plant-food" id="sub-frame">
         <div className="description">
-        肥料-子畫面-道具說明 
+          {this.state.desc}
         </div>
         <div className="items">
           {this.renderItem()}
@@ -394,21 +407,24 @@ class SubFramePlantFood extends React.Component {
 class SubFrameSeed extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      desc: ''
+    };
     this.items = [
       {
         name: "white-radish",
         ct_name: "白蘿蔔",
-        desc: "說明欄"
+        desc: "十字花科,根菜類植物。品種氣候適應性不同，播種期和生產期也不同，全年可買。 肉質根膨大期管理：蘿蔔露肩以後，要保持土壤濕潤，防止土壤忽干忽濕，要小水勤澆，避免過分乾旱和大水漫灌。"
       },
       {
         name: "cauliflower",
         ct_name: "花椰菜",
-        desc: "說明欄"
+        desc: "十字花科，甘藍的一種變種。生長過程喜歡充足的陽光，具強耐寒及耐熱性，對水分的需求大。適合種在排水良好、耕層深厚及保水力強的土壤上。"
       },
       {
         name: "qingjiang",
         ct_name: "青江菜",
-        desc: "說明欄"
+        desc: "十字花科，葉菜類植物。喜冷涼，需日照充足，可越冬也可夏季栽培。對土壤適應性強，但為淺根性，要注意保持排水良好，避免根部腐爛。"
       }
     ];
   }
@@ -424,12 +440,16 @@ class SubFrameSeed extends React.Component {
     if (e) e.stopPropagation();
     this.props.clickHandler();
   }
+  renderDesc(desc) {
+    this.setState({'desc': desc})
+  }
   renderItem() {
     var itemsDom = []
       for (let item of this.items) {
         itemsDom.push(<div 
           className={'item '+item.name}
           onClick={()=>{this.select(item.name)}}
+          onMouseOver={()=>{this.renderDesc(item.desc)}}
           >{item.ct_name}</div>)
       }
       itemsDom.push(<div className='item persimmon disable'>未開放</div>)
@@ -439,7 +459,7 @@ class SubFrameSeed extends React.Component {
     return (
       <div className="sub-frame seeds" id="sub-frame">
         <div className="description">
-        種子-子畫面-道具說明 
+          {this.state.desc}
         </div>
         <div className="items">
           {this.renderItem()}
@@ -454,16 +474,19 @@ class SubFrameSeed extends React.Component {
 class SubFrameWater extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      desc: ''
+    };
     this.items = [
       {
         name: "watering-can",
         ct_name: "澆水器",
-        desc: "說明欄"
+        desc: "經典的澆水器，種植物一定要買一個。"
       },
       {
         name: "pipe",
         ct_name: "水管",
-        desc: "說明欄"
+        desc: "接上水龍頭就能帶來源源不絕的水，但要小心水費變很多。"
       },
       // {
       //   name: "water",
@@ -489,12 +512,16 @@ class SubFrameWater extends React.Component {
     if (e) e.stopPropagation();
     this.props.clickHandler();
   }
+  renderDesc(desc) {
+    this.setState({'desc': desc})
+  }
   renderItem() {
     var itemsDom = []
       for (let item of this.items) {
         itemsDom.push(<div 
           className={'item '+item.name}
           onClick={()=>{this.select(item.name)}}
+          onMouseOver={()=>{this.renderDesc(item.desc)}}
           >{item.ct_name}</div>)
       }
       itemsDom.push(<div className='item disable'>未開放</div>)
@@ -506,7 +533,7 @@ class SubFrameWater extends React.Component {
     return (
       <div className="sub-frame water" id="sub-frame">
         <div className="description">
-        澆水-子畫面-道具說明 
+          {this.state.desc}
         </div>
         <div className="items">
           {this.renderItem()}
@@ -521,26 +548,29 @@ class SubFrameWater extends React.Component {
 class SubFrameWeeding extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      desc: ''
+    };
     this.items = [
       {
         name: "grove",
         ct_name: "手套",
-        desc: "說明欄"
+        desc: "人家沒錢，只買的起手套。"
       },
       {
         name: "sickle",
         ct_name: "鐮刀",
-        desc: "說明欄"
+        desc: "這是鐮刀不是香蕉刀。"
       },
       {
         name: "hoe",
         ct_name: "鋤頭",
-        desc: "說明欄"
+        desc: "你好，我是鋤頭也有人叫我豬頭。"
       },
       {
         name: "spray",
-        ct_name: "生化除草劑",
-        desc: "說明欄"
+        ct_name: "微生物除草劑",
+        desc: "利用寄主專一性，感染致病力強的植物病原菌或其酵素來消除雜草。"
       }
     ];
   }
@@ -556,12 +586,16 @@ class SubFrameWeeding extends React.Component {
     if (e) e.stopPropagation();
     this.props.clickHandler();
   }
+  renderDesc(desc) {
+    this.setState({'desc': desc})
+  }
   renderItem() {
     var itemsDom = []
       for (let item of this.items) {
         itemsDom.push(<div 
           className={'item '+item.name}
           onClick={()=>{this.select(item.name)}}
+          onMouseOver={()=>{this.renderDesc(item.desc)}}
           >{item.ct_name}</div>)
       }
 
@@ -571,7 +605,7 @@ class SubFrameWeeding extends React.Component {
     return (
       <div className="sub-frame weeding" id="sub-frame">
         <div className="description">
-        除草-子畫面-道具說明 
+          {this.state.desc}
         </div>
         <div className="items">
           {this.renderItem()}
@@ -614,8 +648,7 @@ class Weather extends React.Component{
     return (
       <div className="weather">
         <i className="fas fa-cloud-moon"></i>
-        <span className="temperature-text">25</span>
-        <i className="fas fa-temperature-low"></i>
+        <span className="temperature-text">25°C</span>
       </div>
     );
   }

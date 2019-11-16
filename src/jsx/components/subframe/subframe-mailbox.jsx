@@ -4,19 +4,19 @@ class SubFrameMailBox extends React.Component {
     this.news = [
       {
         title: '(國際) 2019/11/07 蝗蟲，正在入侵印度 | 征戰斯芬克斯',
-        url: 'https://www.google.com'
+        url: 'https://read01.com/oABdNo3.html#.Xc_zRzMzbIU'
       },
       {
         title: '(國內) 2019/11/16 輔導落花生契作契銷農民收益有保障 ',
-        url: 'https://www.google.com'
+        url: 'https://www.afa.gov.tw/cht/index.php?code=list&flag=detail&ids=630&article_id=5529'
       },
       {
         title: '(國內) 2019/11/12 大宗蔬菜播種量及供苗預警資訊 ',
-        url: 'https://www.google.com'
+        url: 'https://www.afa.gov.tw/cht/index.php?code=list&flag=detail&ids=307&article_id=45846'
       },
       {
         title: '(國內) 2019/11/15 2019臺灣國際茶業博覽會，讓消費者安心品好茶 ',
-        url: 'https://www.google.com'
+        url: 'https://www.afa.gov.tw/cht/index.php?code=list&flag=detail&ids=307&article_id=45857'
       }
 
     ]

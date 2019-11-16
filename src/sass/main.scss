@@ -66,7 +66,10 @@ h1 {
   }
 
   .shop {
-    // border: 1px solid black;
+    background-image: url('../media/images/shop.png');
+    background-repeat: no-repeat;
+    // background-size: 120px 120px;
+    
     right: 330px;
     font-size: 35px;
   }
@@ -197,6 +200,7 @@ h1 {
         background-size: 120px 120px;
       }
       &.fence-1 {
+        cursor: initial;
         border: 0px;
         background-color: initial;
         background-image: url("../media/images/fence.png");
@@ -210,6 +214,7 @@ h1 {
         bottom: -30px;
       }
       &.fence-2 {
+        cursor: initial;
         border: 0px;
         background-color: initial;
         background-image: url("../media/images/fence.png");
