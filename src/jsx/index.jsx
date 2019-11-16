@@ -40,7 +40,6 @@ class MailBox extends React.Component {
   render() {
     return (
       <div className="mail-box" onClick={()=>{this.props.clickHandler('MailBox')}}>
-        mail-box
       </div>
     );
   }
@@ -77,7 +76,7 @@ class MainFrame extends React.Component {
         MailBox: false,
       }
     }
-    
+
     defaultFrame.frame[type]=true;
     var newState = Object.assign({}, defaultFrame, this.mouseState)
     console.log('newState: ', newState)

@@ -3,23 +3,23 @@ class SubFramePestControl extends React.Component {
     super(props);
     this.items = [
       {
-        name: "grove",
-        ct_name: "道具1",
+        name: "item1",
+        ct_name: "生物性農藥",
         desc: "說明欄"
       },
       {
-        name: "pipe",
-        ct_name: "道具2",
+        name: "item2",
+        ct_name: "茶皂素",
         desc: "說明欄"
       },
       {
-        name: "sickle",
-        ct_name: "道具3",
+        name: "item3",
+        ct_name: "除蟲菊精",
         desc: "說明欄"
       },
       {
-        name: "hoe",
-        ct_name: "道具4",
+        name: "item4",
+        ct_name: "礦物油",
         desc: "說明欄"
       }
     ];
@@ -41,7 +41,6 @@ class SubFramePestControl extends React.Component {
       for (let item of this.items) {
         itemsDom.push(<div 
           className={'item '+item.name}
-          onClick={()=>{this.select(item.name)}}
           >{item.ct_name}</div>)
       }
 
@@ -49,7 +48,7 @@ class SubFramePestControl extends React.Component {
   }
   render() {
     return (
-      <div className="sub-frame" id="sub-frame">
+      <div className="sub-frame pest-control" id="sub-frame">
         <div className="description">
         蟲害防治-子畫面-道具說明 
         </div>

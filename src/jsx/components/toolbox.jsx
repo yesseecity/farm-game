@@ -28,7 +28,6 @@ class ToolBoxRight extends React.Component {
     return (
       <div className={'tools-box right '+this.state.hiddenOffset}>
         <div className="tool weeding" onClick={()=>{this.props.clickHandler('Weeding')}}>
-          除草
         </div>
         <div className="arrow" onClick={()=>this.hiddenHandler()}>
           <i className={'fas fa-angle-left '+this.state.arrowIconRotate}></i>

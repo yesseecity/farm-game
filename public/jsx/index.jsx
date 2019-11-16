@@ -143,7 +143,6 @@ class ToolBoxRight extends React.Component {
     return (
       <div className={'tools-box right '+this.state.hiddenOffset}>
         <div className="tool weeding" onClick={()=>{this.props.clickHandler('Weeding')}}>
-          除草
         </div>
         <div className="arrow" onClick={()=>this.hiddenHandler()}>
           <i className={'fas fa-angle-left '+this.state.arrowIconRotate}></i>
@@ -215,6 +214,25 @@ class SubFrameHarvest extends React.Component {
 class SubFrameMailBox extends React.Component {
   constructor(props) {
     super(props)
+    this.news = [
+      {
+        title: '(國際) 2019/11/07 蝗蟲，正在入侵印度 | 征戰斯芬克斯',
+        url: 'https://www.google.com'
+      },
+      {
+        title: '(國內) 2019/11/16 輔導落花生契作契銷農民收益有保障 ',
+        url: 'https://www.google.com'
+      },
+      {
+        title: '(國內) 2019/11/12 大宗蔬菜播種量及供苗預警資訊 ',
+        url: 'https://www.google.com'
+      },
+      {
+        title: '(國內) 2019/11/15 2019臺灣國際茶業博覽會，讓消費者安心品好茶 ',
+        url: 'https://www.google.com'
+      }
+
+    ]
   }
   componentDidMount() {
     $('.sub-frame').draggable();
@@ -223,17 +241,23 @@ class SubFrameMailBox extends React.Component {
     e.stopPropagation()
     this.props.clickHandler()
   }
+  renderItem() {
+    var itemsDom = []
+      for (let item of this.news) {
+        console.log(item.title)
+        itemsDom.push(<a href={item.url} target="_blank">{item.title}</a>)
+      }
+
+    return itemsDom
+  }
   render() {
     return (
-      <div className="sub-frame" id="sub-frame">
-        <div className="description">
-        信箱-子畫面-道具說明 
+      <div className="sub-frame mail-box" id="sub-frame">
+        <div className="header">
+          農業新聞
         </div>
-        <div className="items">
-          <div className="item">道具1</div>
-          <div className="item">道具2</div>
-          <div className="item">道具3</div>
-          <div className="item">道具4</div>
+        <div className="news" onClick={(e)=>{e.stopPropagation()}}>
+          {this.renderItem()}
         </div>
         <i className="fas fa-times" onClick={()=>{this.props.clickHandler()}}></i>
       </div>
@@ -247,23 +271,23 @@ class SubFramePestControl extends React.Component {
     super(props);
     this.items = [
       {
-        name: "grove",
-        ct_name: "道具1",
+        name: "item1",
+        ct_name: "生物性農藥",
         desc: "說明欄"
       },
       {
-        name: "pipe",
-        ct_name: "道具2",
+        name: "item2",
+        ct_name: "茶皂素",
         desc: "說明欄"
       },
       {
-        name: "sickle",
-        ct_name: "道具3",
+        name: "item3",
+        ct_name: "除蟲菊精",
         desc: "說明欄"
       },
       {
-        name: "hoe",
-        ct_name: "道具4",
+        name: "item4",
+        ct_name: "礦物油",
         desc: "說明欄"
       }
     ];
@@ -285,7 +309,6 @@ class SubFramePestControl extends React.Component {
       for (let item of this.items) {
         itemsDom.push(<div 
           className={'item '+item.name}
-          onClick={()=>{this.select(item.name)}}
           >{item.ct_name}</div>)
       }
 
@@ -293,7 +316,7 @@ class SubFramePestControl extends React.Component {
   }
   render() {
     return (
-      <div className="sub-frame" id="sub-frame">
+      <div className="sub-frame pest-control" id="sub-frame">
         <div className="description">
         蟲害防治-子畫面-道具說明 
         </div>
@@ -602,7 +625,6 @@ class MailBox extends React.Component {
   render() {
     return (
       <div className="mail-box" onClick={()=>{this.props.clickHandler('MailBox')}}>
-        mail-box
       </div>
     );
   }
@@ -639,7 +661,7 @@ class MainFrame extends React.Component {
         MailBox: false,
       }
     }
-    
+
     defaultFrame.frame[type]=true;
     var newState = Object.assign({}, defaultFrame, this.mouseState)
     console.log('newState: ', newState)

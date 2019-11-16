@@ -7,6 +7,7 @@
   left: 120px;
   top: 90px;
   padding: 5px;
+  background: #a2843b;
   &.hidden {
     display: none
   }
@@ -39,8 +40,6 @@
     }
   }
   &.weeding {
-    background: #a2843b;
-
     .item {
       border-color: #94793d;
       box-shadow: -2px 2px 2px 1px #82682b inset;
@@ -70,8 +69,6 @@
     }
   }
   &.water {
-    background: #a2843b;
-
     .item {
       border-color: #94793d;
       box-shadow: -2px 2px 2px 1px #82682b inset;
@@ -93,7 +90,6 @@
       }
     }
   }
-
   &.seeds {
     .item {
       border-color: #94793d;
@@ -140,4 +136,53 @@
       }
     }
   }
+  &.pest-control {
+    .item {
+      border-color: #94793d;
+      box-shadow: -2px 2px 2px 1px #82682b inset;
+      background-repeat: no-repeat;
+      background-size: 84px 84px;
+      background-position: 5px 6px;
+      cursor: not-allowed;
+      &.item1{
+        background-image: url('../media/images/pesticide1.png');
+      }
+      &.item2{
+        background-image: url('../media/images/pesticide2.png');
+      }
+      &.item3{
+        background-image: url('../media/images/pesticide3.png');
+      }
+      &.item4{
+        background-image: url('../media/images/pesticide4.png');
+      }
+      &.disable {
+        cursor: not-allowed;
+      }
+    }
+  }
+  &.mail-box{
+    .header {
+      width: 288px;
+      height: auto;
+      left: 10px;
+      right: 10px;
+      position: relative;
+      border-bottom: 1px solid black;
+    }
+    .news {
+      width: 373px;
+      height: 260px;
+      position: relative;
+      padding: 5px 11px;
+      a {
+        display: block;
+        width: 377px;
+        height: 25px;
+        text-overflow: ellipsis;
+        overflow: hidden; 
+      }
+    }
+  }
+
 }
