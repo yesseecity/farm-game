@@ -39,7 +39,7 @@ class SubFramePlantFood extends React.Component {
           onClick={()=>{this.select(item.name)}}
           >{item.ct_name}</div>)
       }
-      itemsDom.push(<div className="item">未開放</div>)
+      itemsDom.push(<div className="item disable"></div>)
 
     return itemsDom
   }

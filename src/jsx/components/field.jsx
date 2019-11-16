@@ -22,10 +22,11 @@ class SubField extends React.Component {
       'level6': 'grow',
     };
     var subClass = ' ';
-    if (this.state.level) {
+    if (this.state.level > -1) {
       let levelName = 'level'+this.state.level.toString();
       subClass += fieldImgClassInfo[levelName];
     }
+    console.log('subClass: ', subClass);
     subClass += ' '+this.state.wet;
     return subClass
   }

@@ -22,10 +22,11 @@ class SubField extends React.Component {
       'level6': 'grow',
     };
     var subClass = ' ';
-    if (this.state.level) {
+    if (this.state.level > -1) {
       let levelName = 'level'+this.state.level.toString();
       subClass += fieldImgClassInfo[levelName];
     }
+    console.log('subClass: ', subClass);
     subClass += ' '+this.state.wet;
     return subClass
   }
@@ -342,7 +343,7 @@ class SubFramePlantFood extends React.Component {
           onClick={()=>{this.select(item.name)}}
           >{item.ct_name}</div>)
       }
-      itemsDom.push(<div className="item">未開放</div>)
+      itemsDom.push(<div className="item disable"></div>)
 
     return itemsDom
   }
@@ -380,11 +381,6 @@ class SubFrameSeed extends React.Component {
         name: "qingjiang",
         ct_name: "青江菜",
         desc: "說明欄"
-      },
-      {
-        name: "persimmon",
-        ct_name: "柿子",
-        desc: "說明欄"
       }
     ];
   }
@@ -408,7 +404,7 @@ class SubFrameSeed extends React.Component {
           onClick={()=>{this.select(item.name)}}
           >{item.ct_name}</div>)
       }
-
+      itemsDom.push(<div className='item persimmon disable'>未開放</div>)
     return itemsDom
   }
   render() {

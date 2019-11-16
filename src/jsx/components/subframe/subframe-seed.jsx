@@ -16,11 +16,6 @@ class SubFrameSeed extends React.Component {
         name: "qingjiang",
         ct_name: "青江菜",
         desc: "說明欄"
-      },
-      {
-        name: "persimmon",
-        ct_name: "柿子",
-        desc: "說明欄"
       }
     ];
   }
@@ -44,7 +39,7 @@ class SubFrameSeed extends React.Component {
           onClick={()=>{this.select(item.name)}}
           >{item.ct_name}</div>)
       }
-
+      itemsDom.push(<div className='item persimmon disable'>未開放</div>)
     return itemsDom
   }
   render() {

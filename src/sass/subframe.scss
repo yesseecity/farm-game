@@ -44,30 +44,24 @@
     .item {
       border-color: #94793d;
       box-shadow: -2px 2px 2px 1px #82682b inset;
-    }
-    .grove {
-      &:hover {
-        cursor: pointer;
-      }
-      background-image: url('../media/images/grove.png');
       background-repeat: no-repeat;
-      background-size: 90px 90px;
-    }
-    .sickle {
-      &:hover {
-        cursor: pointer;
+      background-size: 90px;
+      cursor: pointer;
+      &.grove {
+        background-image: url('../media/images/grove.png');
+        background-repeat: no-repeat;
+        background-size: 90px 90px;
       }
-      background-image: url('../media/images/sickle.png');
-      background-repeat: no-repeat;
-      background-size: 90px 90px;
-    }
-    .spray {
-      &:hover {
-        cursor: pointer;
+      &.sickle {
+        background-image: url('../media/images/sickle.png');
+        background-repeat: no-repeat;
+        background-size: 90px 90px;
       }
-      background-image: url('../media/images/spray.png');
-      background-repeat: no-repeat;
-      background-size: 90px 90px;
+      &.spray {
+        background-image: url('../media/images/spray.png');
+        background-repeat: no-repeat;
+        background-size: 90px 90px;
+      }
     }
   }
 
@@ -77,6 +71,7 @@
       box-shadow: -2px 2px 2px 1px #82682b inset;
       background-repeat: no-repeat;
       background-size: 90px;
+      cursor: pointer;
       &.white-radish{
         background-image: url('../media/images/white-radish.png');
       }
@@ -85,6 +80,12 @@
       }
       &.qingjiang{
         background-image: url('../media/images/qingjiang.png');
+      }
+      &.persimmon{
+        background-image: url('../media/images/persimmon.png');
+      }
+      &.disable {
+        cursor: not-allowed;
       }
     }
   }
@@ -95,6 +96,7 @@
       background-repeat: no-repeat;
       background-size: 84px 84px;
       background-position: 5px 6px;
+      cursor: pointer;
       &.plant-food{
         background-image: url('../media/images/plant-food.png');
       }
@@ -103,6 +105,9 @@
       }
       &.plant-food3{
         background-image: url('../media/images/plant-food3.png');
+      }
+      &.disable {
+        cursor: not-allowed;
       }
     }
   }
