@@ -410,7 +410,7 @@ class SubFramePlantFood extends React.Component {
           onMouseOver={()=>{this.renderDesc(item.desc)}}
           >{item.ct_name}</div>)
       }
-      itemsDom.push(<div className="item disable"></div>)
+      itemsDom.push(<div className="item disable">未開放</div>)
 
     return itemsDom
   }

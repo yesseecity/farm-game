@@ -50,13 +50,14 @@ h1 {
       }
     }
     .level {
-      border: 1px solid black;
       width: 60px;
       height: 50px;
       left: 0px;
       top: 0px;
       font-size: 30px;
-
+      line-height: 30px;
+      padding-top: 14px;
+      padding-left: 3px;
     }
     .money {
       height: 24px;
@@ -142,8 +143,8 @@ h1 {
         .fas {
           transition: transform 0.5s;
           transform: rotateZ(0deg);
-          position: relative;
-          top: 4px;
+          position: absolute;
+          top: 15px;
           left: 1px;
 
         }
