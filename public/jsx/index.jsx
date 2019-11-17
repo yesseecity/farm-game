@@ -1,6 +1,7 @@
 class Adornment extends React.Component{
-  renderGrass() {
-    var grassDom = [];
+  constructor(props) {
+    super(props);
+    this.grassDom = [];
     var left = 87;
     for(let i=0;i<20;i++) {
       left += Math.floor(Math.random()*15)*i;
@@ -9,7 +10,7 @@ class Adornment extends React.Component{
         left: left+'px',
         top: top+'px'
       };
-      grassDom.push(<div className={'grass'} style={style}></div>)
+      this.grassDom.push(<div className={'grass'} style={style}></div>)
     }
 
     left = 480;
@@ -20,7 +21,7 @@ class Adornment extends React.Component{
         left: left+'px',
         top: top+'px'
       };
-      grassDom.push(<div className={'grass'} style={style}></div>)
+      this.grassDom.push(<div className={'grass'} style={style}></div>)
     }
 
     var top = 123;
@@ -31,11 +32,11 @@ class Adornment extends React.Component{
         left: left+'px',
         top: top+'px'
       };
-      grassDom.push(<div className={'grass'} style={style}></div>)
+      this.grassDom.push(<div className={'grass'} style={style}></div>)
     }
-    console.log(grassDom.length)
-    // return grassDom
-    return 
+  }
+  renderGrass() {
+    return this.grassDom
   }
   componentDidMount() {
     // $('.flower').draggable();
@@ -44,7 +45,7 @@ class Adornment extends React.Component{
   render() {
     return (
       <div className="adornment">
-        
+        {this.renderGrass()}
         <div className="chicken c1"></div>
         <div className="chicken c2"></div>
         <div className="chicken-s c4"></div>
