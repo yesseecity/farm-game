@@ -34,15 +34,17 @@ class Adornment extends React.Component{
       grassDom.push(<div className={'grass'} style={style}></div>)
     }
     console.log(grassDom.length)
-    return grassDom
+    // return grassDom
+    return 
   }
   componentDidMount() {
-    $('.flower').draggable();
-    $('.grass').draggable();
+    // $('.flower').draggable();
+    // $('.grass').draggable();
   }
   render() {
     return (
       <div className="adornment">
+        
         <div className="chicken c1"></div>
         <div className="chicken c2"></div>
         <div className="chicken-s c4"></div>
@@ -56,7 +58,6 @@ class Adornment extends React.Component{
         <div className="flower f1" ></div>
         <div className="flower f2" ></div>
         <div className="flower f3" ></div>
-        {this.renderGrass()}
       </div>
     );
   }
