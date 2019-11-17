@@ -1,3 +1,67 @@
+class Adornment extends React.Component{
+  renderGrass() {
+    var grassDom = [];
+    var left = 87;
+    for(let i=0;i<20;i++) {
+      left += Math.floor(Math.random()*15)*i;
+      let top = 90 + Math.floor(Math.random()*10)*i;
+      let style = {
+        left: left+'px',
+        top: top+'px'
+      };
+      grassDom.push(<div className={'grass'} style={style}></div>)
+    }
+
+    left = 480;
+    for(let i=0;i<10;i++) {
+      left += Math.floor(Math.random()*15)*i;
+      let top = 90+Math.floor(Math.random()*10)*i;
+      let style = {
+        left: left+'px',
+        top: top+'px'
+      };
+      grassDom.push(<div className={'grass'} style={style}></div>)
+    }
+
+    var top = 123;
+    for(let i=0;i<20;i++) {
+      let left = 389+Math.floor(Math.random()*10)*i;
+      top += Math.floor(Math.random()*10)*i;
+      let style = {
+        left: left+'px',
+        top: top+'px'
+      };
+      grassDom.push(<div className={'grass'} style={style}></div>)
+    }
+    console.log(grassDom.length)
+    return grassDom
+  }
+  componentDidMount() {
+    $('.flower').draggable();
+    $('.grass').draggable();
+  }
+  render() {
+    return (
+      <div className="adornment">
+        <div className="chicken c1"></div>
+        <div className="chicken c2"></div>
+        <div className="chicken-s c4"></div>
+        <div className="chicken-s c5"></div>
+        <div className="chicken-s c6"></div>
+        <div className="chicken-s c7"></div>
+        <div className="tree tree1 t1" ></div>
+        <div className="tree tree2 t2" ></div>
+        <div className="tree tree1 t3" ></div>
+        <div className="tree tree2 t4" ></div>
+        <div className="flower f1" ></div>
+        <div className="flower f2" ></div>
+        <div className="flower f3" ></div>
+        {this.renderGrass()}
+      </div>
+    );
+  }
+}
+
 class SubField extends React.Component {
   constructor(props) {
     super(props)
@@ -870,34 +934,15 @@ class MainFrame extends React.Component {
           onClick={(e)=>{this.click_main(e)}}
           onContextMenu={(e)=>{this.click_main(e)}}
       >
+        <Adornment />
         <AccountInfo />
         <Shop />
         <Weather />
         <Field mouseState={this.state.mouse} addHarvest={(plantName)=>{this.addHarvest(plantName)}}/>
-        <div className="fence" hidden>
-          <div className="fence-divs">
-            <div className="fence-1"></div>
-            <div className="fence-2"></div>
-            <div className="fence-3"></div>
-            <div className="fence-4"></div>
-            <div className="fence-5"></div>
-            <div className="fence-6"></div>
-          </div>
-        </div>
         <div className="greenhouse disable" alert="還沒開放"></div>
         <MailBox />
         <ToolBoxBottom clickHandler={(type)=>{this.openSubFrame(type)}} />
         <ToolBoxRight clickHandler={(type)=>{this.openSubFrame(type)}} />
-        <div class="chicken c1"></div>
-        <div class="chicken c2"></div>
-        <div class="chicken-s c4"></div>
-        <div class="chicken-s c5"></div>
-        <div class="chicken-s c6"></div>
-        <div class="chicken-s c7"></div>
-        <div class="tree tree1 t1" ></div>
-        <div class="tree tree2 t2" ></div>
-        <div class="tree tree1 t3" ></div>
-        <div class="tree tree2 t4" ></div>
         {this.rendSubFrame()}
       </div>
     );

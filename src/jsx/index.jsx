@@ -222,34 +222,15 @@ class MainFrame extends React.Component {
           onClick={(e)=>{this.click_main(e)}}
           onContextMenu={(e)=>{this.click_main(e)}}
       >
+        <Adornment />
         <AccountInfo />
         <Shop />
         <Weather />
         <Field mouseState={this.state.mouse} addHarvest={(plantName)=>{this.addHarvest(plantName)}}/>
-        <div className="fence" hidden>
-          <div className="fence-divs">
-            <div className="fence-1"></div>
-            <div className="fence-2"></div>
-            <div className="fence-3"></div>
-            <div className="fence-4"></div>
-            <div className="fence-5"></div>
-            <div className="fence-6"></div>
-          </div>
-        </div>
         <div className="greenhouse disable" alert="還沒開放"></div>
         <MailBox />
         <ToolBoxBottom clickHandler={(type)=>{this.openSubFrame(type)}} />
         <ToolBoxRight clickHandler={(type)=>{this.openSubFrame(type)}} />
-        <div class="chicken c1"></div>
-        <div class="chicken c2"></div>
-        <div class="chicken-s c4"></div>
-        <div class="chicken-s c5"></div>
-        <div class="chicken-s c6"></div>
-        <div class="chicken-s c7"></div>
-        <div class="tree tree1 t1" ></div>
-        <div class="tree tree2 t2" ></div>
-        <div class="tree tree1 t3" ></div>
-        <div class="tree tree2 t4" ></div>
         {this.rendSubFrame()}
       </div>
     );
