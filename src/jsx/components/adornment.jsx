@@ -2,6 +2,7 @@ class Adornment extends React.Component{
   constructor(props) {
     super(props);
     this.grassDom = [];
+    this.treeDom = [];
     var left = 87;
     for(let i=0;i<20;i++) {
       left += Math.floor(Math.random()*15)*i;
@@ -34,9 +35,23 @@ class Adornment extends React.Component{
       };
       this.grassDom.push(<div className={'grass'} style={style}></div>)
     }
+
+    top = 50;
+    for(let i=0;i<12;i++) {
+      let left = 700+Math.floor(Math.random()*5)*i;
+      top += Math.floor(Math.random()*15)*i;
+      let style = {
+        left: left+'px',
+        top: top+'px'
+      };
+      this.treeDom.push(<div className={'tree tree'+(i%2+1)} style={style}></div>)
+    }
   }
   renderGrass() {
     return this.grassDom
+  }
+  renderTree() {
+    return this.treeDom
   }
   componentDidMount() {
     // $('.flower').draggable();
@@ -56,6 +71,7 @@ class Adornment extends React.Component{
         <div className="tree tree2 t2" ></div>
         <div className="tree tree1 t3" ></div>
         <div className="tree tree2 t4" ></div>
+        {this.renderTree()}
         <div className="flower f1" ></div>
         <div className="flower f2" ></div>
         <div className="flower f3" ></div>
