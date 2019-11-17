@@ -3,8 +3,8 @@ class SubFrameMailBox extends React.Component {
     super(props)
     this.news = [
       {
-        title: '(國際) 2019/11/07 蝗蟲，正在入侵印度 | 征戰斯芬克斯',
-        url: 'https://read01.com/oABdNo3.html#.Xc_zRzMzbIU'
+        title: '(國際) 2019/11/07 Locust invasion: UN warning for Ethiopia, Kenya, Eritrea and Sudan',
+        url: 'https://www.bbc.com/news/world-africa-50345204'
       },
       {
         title: '(國內) 2019/11/16 輔導落花生契作契銷農民收益有保障 ',
