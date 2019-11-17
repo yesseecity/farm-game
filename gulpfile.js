@@ -23,6 +23,7 @@ const paths = {
   css: {
     src: [
       './node_modules/@fortawesome/fontawesome-free/css/all.css',
+      './node_modules/react-perfect-scrollbar/dist/css/styles.css',
       './node_modules/jquery-ui-dist/jquery-ui.min.css',
       './temp/css/*.css',
     ],
@@ -38,7 +39,7 @@ const paths = {
     src: [
       './src/lib/*.js',
       './node_modules/jquery/dist/jquery.min.js',
-      './node_modules/jquery-ui-dist/jquery-ui.min.js'
+      './node_modules/jquery-ui-dist/jquery-ui.min.js',
     ],
     dest: './public/js/'
   },

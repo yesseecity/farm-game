@@ -185,6 +185,11 @@ class ToolBoxBottom extends React.Component {
 class SubFrameHarvest extends React.Component {
   constructor(props) {
     super(props)
+    this.priceInfo = {
+      'qingjiang': '27元/台斤',
+      'cauliflower': '53元/台斤',
+      'white-radish': '26元/台斤'
+    };
   }
   componentDidMount() {
     $('.sub-frame').draggable();
@@ -203,7 +208,7 @@ class SubFrameHarvest extends React.Component {
       // console.log('amount: ', amount)
       let dom = <div className={'item '+itemName}>
           <div className={'img '+itemName}></div>
-          <div className="price">$ 20</div>
+          <div className="price">{this.priceInfo[itemName]}</div>
           <input className="count" type="number" Max={amount} Min="0" />
         </div>;
       itemsDom.push(dom);
@@ -276,8 +281,9 @@ class SubFrameMailBox extends React.Component {
           農業新聞
         </div>
         <div className="news" onClick={(e)=>{e.stopPropagation()}}>
-          {this.renderItem()}
+            {this.renderItem()}
         </div>
+               
         <i className="fas fa-times" onClick={()=>{this.props.clickHandler()}}></i>
       </div>
     );
@@ -293,24 +299,25 @@ class SubFramePestControl extends React.Component {
     };
     this.items = [
       {
-        name: "item1",
-        ct_name: "生物性農藥",
-        desc: "天然物質如動物、植物、微生物及其所衍生之產品，對人畜安全無毒害，不會危及鳥類，其他生物"      },
-      {
-        name: "item2",
-        ct_name: "茶皂素",
-        desc: "天然植物提煉之殺蟲劑。優點：易降解，無殘留"
-      },
-      {
         name: "item3",
         ct_name: "除蟲菊精",
-        desc: "天然化合物殺蟲劑。優點：高效、低毒、易降解"
+        desc: "除蟲菊精為天然化合物殺蟲劑，優點：高效、低毒、易降解。"
       },
       {
         name: "item4",
         ct_name: "礦物油",
-        desc: "天然殺蟲劑、殺菌劑，使昆蟲物理性窒息。優點：高效、經濟"
-      }
+        desc: "礦物油為天然殺蟲劑、殺菌劑，可使昆蟲物理性窒息，優點：高效、經濟。"
+      },
+      {
+        name: "item5",
+        ct_name: "印棟素",
+        desc: "印棟素為天然植物提煉之殺蟲劑、殺菌劑，優點：高效、低毒、易降解。"
+      },
+      {
+        name: "item2",
+        ct_name: "茶皂素",
+        desc: "茶皂素為天然植物提煉之殺蟲劑，優點：易降解，無殘留。"
+      },
     ];
   }
   componentDidMount() {
@@ -433,17 +440,17 @@ class SubFrameSeed extends React.Component {
       {
         name: "white-radish",
         ct_name: "白蘿蔔",
-        desc: "十字花科,根菜類植物。品種氣候適應性不同，播種期和生產期也不同，全年可買。 肉質根膨大期管理：蘿蔔露肩以後，要保持土壤濕潤，防止土壤忽干忽濕，要小水勤澆，避免過分乾旱和大水漫灌。"
+        desc: "白蘿蔔：十字花科，屬根菜類植物。品種氣候適應性不同，播種期和生產期也不同，全年可買。肉質根膨大期管理：蘿蔔露肩後，需保持土壤濕潤且切勿忽乾忽濕，避免過分乾旱和大水漫灌。"
       },
       {
         name: "cauliflower",
         ct_name: "花椰菜",
-        desc: "十字花科，甘藍的一種變種。生長過程喜歡充足的陽光，具強耐寒及耐熱性，對水分的需求大。適合種在排水良好、耕層深厚及保水力強的土壤上。"
+        desc: "花椰菜：十字花科，屬甘藍的一種變種。生長過程需充足陽光，具強耐寒及耐熱性，對水分需求大，適合種在排水良好、耕層深厚及保水力強的土壤上。"
       },
       {
         name: "qingjiang",
         ct_name: "青江菜",
-        desc: "十字花科，葉菜類植物。喜冷涼，需日照充足，可越冬也可夏季栽培。對土壤適應性強，但為淺根性，要注意保持排水良好，避免根部腐爛。"
+        desc: "青江菜：十字花科，屬葉菜類植物。喜冷涼，需充足日照，可越冬也可夏季栽培，對土壤適應性強。但為淺根性，需保持良好排水，避免根部腐爛。"
       }
     ];
   }
@@ -471,7 +478,7 @@ class SubFrameSeed extends React.Component {
           onMouseOver={()=>{this.renderDesc(item.desc)}}
           >{item.ct_name}</div>)
       }
-      itemsDom.push(<div className='item persimmon disable'>未開放</div>)
+      itemsDom.push(<div className='item disable'>未開放</div>)
     return itemsDom
   }
   render() {
@@ -669,7 +676,7 @@ class Weather extends React.Component{
     return (
       <div className="weather">
         <div className="sun"></div>
-        <span className="temperature-text">31°C</span>
+        <span className="temperature-text">28°C</span>
       </div>
     );
   }

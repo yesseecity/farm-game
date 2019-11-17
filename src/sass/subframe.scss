@@ -156,6 +156,9 @@
       &.item4{
         background-image: url('../media/images/pesticide4.png');
       }
+      &.item5{
+        background-image: url('../media/images/pesticide5.png');
+      }
       &.disable {
         cursor: not-allowed;
       }
@@ -175,12 +178,11 @@
       height: 260px;
       position: relative;
       padding: 5px 11px;
+      overflow: auto;
       a {
         display: block;
-        width: 377px;
+        width: 540px;
         height: 25px;
-        text-overflow: ellipsis;
-        overflow: hidden; 
       }
     }
   }
@@ -204,12 +206,12 @@
     }
     .item {
       height: 110px;
-      width: 100px;
+      width: 120px;
       margin: 5px;
       .img {
         width: 75px;
         height: 75px;
-        left: 12px;
+        left: 22px;
         &.qingjiang {
           background-image: url('../media/images/qingjiang.png');
           background-repeat: no-repeat;
@@ -227,7 +229,7 @@
         }
       }
       .price {
-        width: 50px;
+        width: 80px;
         height: 30px;
         bottom: 0px;
         left: 5px;

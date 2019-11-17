@@ -1,6 +1,11 @@
 class SubFrameHarvest extends React.Component {
   constructor(props) {
     super(props)
+    this.priceInfo = {
+      'qingjiang': '27元/台斤',
+      'cauliflower': '53元/台斤',
+      'white-radish': '26元/台斤'
+    };
   }
   componentDidMount() {
     $('.sub-frame').draggable();
@@ -19,7 +24,7 @@ class SubFrameHarvest extends React.Component {
       // console.log('amount: ', amount)
       let dom = <div className={'item '+itemName}>
           <div className={'img '+itemName}></div>
-          <div className="price">$ 20</div>
+          <div className="price">{this.priceInfo[itemName]}</div>
           <input className="count" type="number" Max={amount} Min="0" />
         </div>;
       itemsDom.push(dom);

@@ -6,24 +6,25 @@ class SubFramePestControl extends React.Component {
     };
     this.items = [
       {
-        name: "item1",
-        ct_name: "生物性農藥",
-        desc: "天然物質如動物、植物、微生物及其所衍生之產品，對人畜安全無毒害，不會危及鳥類，其他生物"      },
-      {
-        name: "item2",
-        ct_name: "茶皂素",
-        desc: "天然植物提煉之殺蟲劑。優點：易降解，無殘留"
-      },
-      {
         name: "item3",
         ct_name: "除蟲菊精",
-        desc: "天然化合物殺蟲劑。優點：高效、低毒、易降解"
+        desc: "除蟲菊精為天然化合物殺蟲劑，優點：高效、低毒、易降解。"
       },
       {
         name: "item4",
         ct_name: "礦物油",
-        desc: "天然殺蟲劑、殺菌劑，使昆蟲物理性窒息。優點：高效、經濟"
-      }
+        desc: "礦物油為天然殺蟲劑、殺菌劑，可使昆蟲物理性窒息，優點：高效、經濟。"
+      },
+      {
+        name: "item5",
+        ct_name: "印棟素",
+        desc: "印棟素為天然植物提煉之殺蟲劑、殺菌劑，優點：高效、低毒、易降解。"
+      },
+      {
+        name: "item2",
+        ct_name: "茶皂素",
+        desc: "茶皂素為天然植物提煉之殺蟲劑，優點：易降解，無殘留。"
+      },
     ];
   }
   componentDidMount() {

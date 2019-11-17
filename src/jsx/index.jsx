@@ -28,7 +28,7 @@ class Weather extends React.Component{
     return (
       <div className="weather">
         <div className="sun"></div>
-        <span className="temperature-text">31°C</span>
+        <span className="temperature-text">28°C</span>
       </div>
     );
   }

@@ -1,7 +1,7 @@
 # farm-game
-農場遊戲
+農場遊戲 - Orgafun
 
-![image](https://github.com/yesseecity/farm-game/blob/master/docs/main.jpg)
+遊玩畫面  [https://yesseecity.github.io/farm-game/public/](https://yesseecity.github.io/farm-game/public/)
 
 
 ### 開發環境安裝

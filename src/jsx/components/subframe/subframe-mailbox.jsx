@@ -44,8 +44,9 @@ class SubFrameMailBox extends React.Component {
           農業新聞
         </div>
         <div className="news" onClick={(e)=>{e.stopPropagation()}}>
-          {this.renderItem()}
+            {this.renderItem()}
         </div>
+               
         <i className="fas fa-times" onClick={()=>{this.props.clickHandler()}}></i>
       </div>
     );
