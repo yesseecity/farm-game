@@ -26,7 +26,7 @@
     "gulp-sass": "^4.0.2",
     "gulp-sourcemaps": "^2.6.5",
     "gulp-watch": "^5.0.1",
-    "node-sass": "^4.12.0",
+    "node-sass": "^4.13.1",
     "package.json": "^2.0.1",
     "react-perfect-scrollbar": "^1.5.3",
     "yamljs": "^0.3.0"
